@@ -3,12 +3,13 @@ package de.henrikkaltenbach.forzatelemetry.telemetry;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import de.henrikkaltenbach.forzatelemetry.BR;
+import de.henrikkaltenbach.forzatelemetry.data.Sector;
 
 public class TelemetryViewModel extends BaseObservable {
 
-    // FIELDS
+    // region Fields
     //
-    // Forza data out
+    // region Forza data out
     //
     private int isRaceOn;
     private int timestampMS;
@@ -77,7 +78,7 @@ public class TelemetryViewModel extends BaseObservable {
     private float tireTempFrontLeft;
     private float tireTempFrontRight;
     private float tireTempRearLeft;
-    private float tireTempRearRight;    // Todo: tire temp rear right seems to be wrong.
+    private float tireTempRearRight;    // Todo: tire temp rear right seems to be the same as rear left.
     private float boost;
     private float fuel;
     private float distanceTraveled;
@@ -95,8 +96,9 @@ public class TelemetryViewModel extends BaseObservable {
     private byte steer;
     private byte normalizedDrivingLine;
     private byte normalizedAIBrakeDifference;
-    //
-    // Calculated data
+    // endregion Forza data out
+
+    // region Calculated data
     //
     private float maxMeasuredRpm;
     private float maxMeasuredAcceleration;
@@ -120,10 +122,40 @@ public class TelemetryViewModel extends BaseObservable {
     private float tireTempRear;
     private float tireTempLeft;
     private float tireTempRight;
+    // endregion Calculated data
+    // endregion Fields
 
-    // GETTER
+    // region Experimental
     //
-    // Forza data out
+    private String sector;
+    private int test;
+    @Bindable
+    public int getTest() {
+        return test;
+    }
+    public void countTest() {
+        test++;
+        notifyPropertyChanged(BR.test);
+    }
+    // endregion Experimental
+
+    // region Singleton
+    //
+    private static TelemetryViewModel instance;
+
+    private TelemetryViewModel() {}
+
+    public static synchronized TelemetryViewModel getInstance() {
+        if (instance == null) {
+            instance = new TelemetryViewModel();
+        }
+        return instance;
+    }
+    // endregion Singleton
+
+    // region Getter
+    //
+    // region Forza data out
     //
     @Bindable
     public int getIsRaceOn() {
@@ -574,8 +606,9 @@ public class TelemetryViewModel extends BaseObservable {
     public byte getNormalizedAIBrakeDifference() {
         return normalizedAIBrakeDifference;
     }
+    // endregion Forza data out
 
-    // Calculated data
+    // region Calculated data
     //
     @Bindable
     public float getMaxMeasuredRpm() {
@@ -716,6 +749,16 @@ public class TelemetryViewModel extends BaseObservable {
     public float getTireTempRightCelsius() {
         return (tireTempRight - 32f) / 1.8f;
     }
+
+    @Bindable
+    public String getSector() {
+        if (sector != null) {
+            return sector;
+        }
+        return "null";
+    }
+    // endregion Calculated data
+    // endregion Getter
 
     // region Setter
     //
@@ -1323,6 +1366,7 @@ public class TelemetryViewModel extends BaseObservable {
             notifyPropertyChanged(BR.normalizedAIBrakeDifference);
         }
     }
+    // endregion Forza data out
 
     // region Calculated data
     //
@@ -1476,9 +1520,15 @@ public class TelemetryViewModel extends BaseObservable {
             notifyPropertyChanged(BR.tireTempRightCelsius);
         }
     }
-    //
+
+    public void calcSector() {
+        String sector = Sector.getSector(positionX, positionZ);
+        if (this.sector == null || this.sector.equals(sector)) {
+            this.sector = sector;
+            notifyPropertyChanged(BR.sector);
+        }
+    }
     // endregion Calculated data
-    //
     // endregion Setter
 
     // region Utility methods
@@ -1486,4 +1536,5 @@ public class TelemetryViewModel extends BaseObservable {
     private float getVector3DLength(float x, float y, float z) {
         return (float) Math.sqrt(x*x + y*y + z*z);
     }
+    // endregion Utility methods
 }

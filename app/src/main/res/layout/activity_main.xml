@@ -53,7 +53,7 @@
                     android:textSize="36sp"/>
             <TextView
                     android:fontFamily="sans-serif-thin"
-                    android:id="@+id/dataGearDamage"
+                    android:id="@+id/dataGear"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
@@ -218,7 +218,7 @@
                         android:id="@+id/labelPositionX"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:text="@string/positionX"
                         android:textSize="36sp"/>
                 <TextView
@@ -226,7 +226,7 @@
                         android:id="@+id/labelPositionY"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:text="@string/positionY"
                         android:textSize="36sp"/>
                 <TextView
@@ -234,7 +234,7 @@
                         android:id="@+id/labelPositionZ"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:text="@string/positionZ"
                         android:textSize="36sp"/>
             </LinearLayout>
@@ -248,33 +248,56 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:text="@string/meter"
-                        android:textSize="36sp" android:textAlignment="textEnd"/>
+                        android:text="@{telemetry.sector}"
+                        android:textSize="36sp"
+                        android:textAlignment="textEnd"/>
                 <TextView
                         android:fontFamily="sans-serif-thin"
                         android:id="@+id/dataPositionX"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:text="@{@string/five_point_two(telemetry.positionX)}"
-                        android:textSize="36sp"/>
+                        android:textSize="36sp" android:textAlignment="textEnd"/>
                 <TextView
                         android:fontFamily="sans-serif-thin"
                         android:id="@+id/dataPositionY"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:text="@{@string/five_point_two(telemetry.positionY)}"
-                        android:textSize="36sp"/>
+                        android:textSize="36sp" android:textAlignment="textEnd"/>
                 <TextView
                         android:fontFamily="sans-serif-thin"
                         android:id="@+id/dataPositionZ"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:text="@{@string/five_point_two(telemetry.positionZ)}"
-                        android:textSize="36sp"/>
+                        android:textSize="36sp" android:textAlignment="textEnd"/>
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+            <TextView
+                    android:fontFamily="sans-serif-thin"
+                    android:id="@+id/test1"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:text="Distance"
+                    android:textSize="36sp"/>
+            <TextView
+                    android:fontFamily="sans-serif-thin"
+                    android:id="@+id/test2"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:text="@{@string/five_point_two(telemetry.distanceTraveled)}"
+                    android:textAlignment="textEnd"
+                    android:textSize="36sp"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

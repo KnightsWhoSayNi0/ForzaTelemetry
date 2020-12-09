@@ -11,19 +11,15 @@ import de.henrikkaltenbach.forzatelemetry.telemetry.TelemetryViewModel;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    private TelemetryViewModel model;
-    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        model = new TelemetryViewModel();
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setTelemetry(model);
+        binding.setTelemetry(TelemetryViewModel.getInstance());
 
-        Thread thread = new Thread(new ClientListen(model));
+        Thread thread = new Thread(new ClientListen());
         thread.start();
     }
 }
