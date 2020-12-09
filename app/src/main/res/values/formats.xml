@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="integer">%d</string>
+    <string name="fp_number">%f</string>
+    <string name="one_point_two">%3.2f</string>
+    <string name="three_point_one">%4.1f</string>
+    <string name="three_point_two">%5.2f</string>
+    <string name="four_point_one">%5.1f</string>
+    <string name="five_point_two">%7.2f</string>
+</resources>

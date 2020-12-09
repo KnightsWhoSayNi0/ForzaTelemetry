@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Forza Telemetry</string>
+    <string name="rpm">RPM</string>
+    <string name="gear">Gear</string>
+    <string name="boost">Boost</string>
+    <string name="tire_temp">Tire temp</string>
+    <string name="reverse">R</string>
+    <string name="front_left">FL</string>
+    <string name="front_right">FR</string>
+    <string name="rear_left">RL</string>
+    <string name="rear_right">RR</string>
+    <string name="position">Position</string>
+    <string name="positionX">X</string>
+    <string name="positionY">Y</string>
+    <string name="positionZ">Z</string>
+</resources>
