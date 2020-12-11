@@ -15,6 +15,8 @@ public class DataProcessor {
     protected DataProcessor() {
         telemetry = TelemetryViewModel.getInstance();
         calculated = CalculatedViewModel.getInstance();
+        calculated.setTelemetry(telemetry);
+        telemetry.setCalculated(calculated);
     }
 
     protected void parseData(byte[] data, int counter) {

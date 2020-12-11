@@ -7,7 +7,17 @@ import de.henrikkaltenbach.forzatelemetry.scenarios.*;
 
 public class CalculatedViewModel extends BaseObservable {
 
-    protected final TelemetryViewModel telemetry = TelemetryViewModel.getInstance();
+    // region Cross reference
+    //
+    private boolean telemetrySet;
+    private TelemetryViewModel telemetry;
+    public void setTelemetry(TelemetryViewModel telemetry) {
+        if (!telemetrySet) {
+            this.telemetry = telemetry;
+            telemetrySet = true;
+        }
+    }
+    // endregion Cross reference
 
     // region Singleton
     //
