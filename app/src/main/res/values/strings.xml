@@ -1,4 +1,5 @@
 <resources>
+    <!-- Labels. -->
     <string name="app_name">Forza Telemetry</string>
     <string name="rpm">RPM</string>
     <string name="gear">Gear</string>
@@ -13,4 +14,36 @@
     <string name="positionX">X</string>
     <string name="positionY">Y</string>
     <string name="positionZ">Z</string>
+    <string name="distance">Distance</string>
+    <string name="no_sector">no sector</string>
+    <!-- Units. -->
+    <string name="bar">bar</string>
+    <string name="celsius">°C</string>
+    <string name="fahrenheit">°F</string>
+    <string name="psi">psi</string>
+    <string name="meter">m</string>
+    <!-- Format strings. -->
+    <string name="format_d">%d</string>
+    <string name="format_f">%f</string>
+    <string name="format_f3p2">%3.2f</string>
+    <string name="format_f4p1">%4.1f</string>
+    <string name="format_f5p2">%5.2f</string>
+    <string name="format_f5p1">%5.1f</string>
+    <string name="format_f6p2">%6.2f</string>
+    <string name="format_f8p2">%8.2f</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

@@ -1,25 +1,32 @@
 package de.henrikkaltenbach.forzatelemetry;
 
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import de.henrikkaltenbach.forzatelemetry.databinding.ActivityMainBinding;
-import de.henrikkaltenbach.forzatelemetry.network.ClientListen;
-import de.henrikkaltenbach.forzatelemetry.telemetry.TelemetryViewModel;
+import de.henrikkaltenbach.forzatelemetry.network.UdpListener;
+import de.henrikkaltenbach.forzatelemetry.viewmodels.CalculatedViewModel;
+import de.henrikkaltenbach.forzatelemetry.viewmodels.TelemetryViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    private UdpListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setTelemetry(TelemetryViewModel.getInstance());
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setVariable(BR.telemetry, TelemetryViewModel.getInstance());
+        binding.setVariable(BR.calculated, CalculatedViewModel.getInstance());
 
-        Thread thread = new Thread(new ClientListen());
-        thread.start();
+        listener = new UdpListener(8080);
+        listener.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        listener.close();
     }
 }

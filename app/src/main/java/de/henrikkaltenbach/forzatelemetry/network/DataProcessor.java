@@ -1,59 +1,28 @@
 package de.henrikkaltenbach.forzatelemetry.network;
 
-import de.henrikkaltenbach.forzatelemetry.telemetry.TelemetryViewModel;
+import de.henrikkaltenbach.forzatelemetry.viewmodels.CalculatedViewModel;
+import de.henrikkaltenbach.forzatelemetry.viewmodels.TelemetryViewModel;
 
-import java.io.IOException;
-import java.net.*;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
-import java.util.Enumeration;
 
-public class ClientListen implements Runnable {
+public class DataProcessor {
 
     private final TelemetryViewModel telemetry;
-    private final int port;
+    private final CalculatedViewModel calculated;
 
-    public ClientListen(int port) {
-        this.telemetry = TelemetryViewModel.getInstance();
-        this.port = port;
+    protected DataProcessor() {
+        telemetry = TelemetryViewModel.getInstance();
+        calculated = CalculatedViewModel.getInstance();
     }
 
-    public ClientListen() {
-        this(8080);
-    }
-
-    @Override
-    public void run() {
-        boolean run = true;
-        try {
-            DatagramSocket udpSocket = new DatagramSocket(port);
-            byte[] buffer = new byte[320];
-            DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-            int counter = 0;
-            while (run) {
-                try {
-                    udpSocket.receive(packet);
-                    parseData(packet.getData(), counter);
-                    counter++;
-                    packet.setLength(buffer.length);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    run = false;
-                }
-            }
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void parseData(byte[] data, int counter) {
-        if (counter % 2 == 0) {
+    protected void parseData(byte[] data, int counter) {
+        telemetry.setIsRaceOn(getBytes(data, 0, 4).getInt());
+        telemetry.setTimestampMS(getBytes(data, 4, 8).getInt());
+        if (telemetry.getIsRaceOn() == 1 && counter % 2 == 0) {
             // region Forza data out
             //
-            telemetry.setIsRaceOn(getBytes(data, 0, 4).getInt());
-            telemetry.setTimestampMS(getBytes(data, 4, 8).getInt());
-
             telemetry.setEngineMaxRpm(getBytes(data, 8, 12).getFloat());
             telemetry.setEngineIdleRpm(getBytes(data, 12, 16).getFloat());
             telemetry.setCurrentEngineRpm(getBytes(data, 16, 20).getFloat());
@@ -163,43 +132,22 @@ public class ClientListen implements Runnable {
             // region Calculated data
             //
             if (counter % 4 == 0) {
-                telemetry.calcVelocity();
-                telemetry.calcAngularVelocity();
-                telemetry.calcTireTempFront();
-                telemetry.calcTireTempRear();
-                telemetry.calcTireTempLeft();
-                telemetry.calcTireTempRight();
-
+                calculated.calcVelocity();
+                calculated.calcAngularVelocity();
+                calculated.calcTireTempAverageFront();
+                calculated.calcTireTempAverageRear();
+                calculated.calcTireTempAverageLeft();
+                calculated.calcTireTempAverageRight();
             }
 
-//            if (counter % 60 == 0) {
-//                telemetry.calcSector();
-//            }
+            if (counter % 30 == 0) {
+                calculated.calcSector();
+            }
             // endregion Calculated data
         }
     }
 
     private ByteBuffer getBytes(byte[] array, int offset, int length) {
         return ByteBuffer.wrap(Arrays.copyOfRange(array, offset, length)).order(ByteOrder.LITTLE_ENDIAN);
-    }
-
-    // Probably not used.
-    private String getLocalIpAddress() {
-        try {
-            for (Enumeration<NetworkInterface> eNI = NetworkInterface.getNetworkInterfaces(); eNI.hasMoreElements();) {
-                NetworkInterface ni = eNI.nextElement();
-                if (ni.getName().equals("wlan0")) {
-                    for (Enumeration<InetAddress> eIA = ni.getInetAddresses(); eIA.hasMoreElements();) {
-                        InetAddress ia = eIA.nextElement();
-                        if (ia.toString().contains("192.168.")) {
-                            return ia.toString().substring(1);
-                        }
-                    }
-                }
-            }
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 }

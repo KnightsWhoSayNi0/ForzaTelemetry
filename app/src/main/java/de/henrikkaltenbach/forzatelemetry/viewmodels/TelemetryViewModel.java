@@ -1,143 +1,12 @@
-package de.henrikkaltenbach.forzatelemetry.telemetry;
+package de.henrikkaltenbach.forzatelemetry.viewmodels;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import de.henrikkaltenbach.forzatelemetry.BR;
-import de.henrikkaltenbach.forzatelemetry.data.Sector;
 
 public class TelemetryViewModel extends BaseObservable {
 
-    // region Fields
-    //
-    // region Forza data out
-    //
-    private int isRaceOn;
-    private int timestampMS;
-    private float engineMaxRpm;
-    private float engineIdleRpm;
-    private float currentEngineRpm;
-    private float accelerationX;
-    private float accelerationY;
-    private float accelerationZ;
-    private float velocityX;
-    private float velocityY;
-    private float velocityZ;
-    private float angularVelocityX;
-    private float angularVelocityY;
-    private float angularVelocityZ;
-    private float yaw;
-    private float pitch;
-    private float roll;
-    private float normalizedSuspensionTravelFrontLeft;
-    private float normalizedSuspensionTravelFrontRight;
-    private float normalizedSuspensionTravelRearLeft;
-    private float normalizedSuspensionTravelRearRight;
-    private float tireSlipRatioFrontLeft;
-    private float tireSlipRatioFrontRight;
-    private float tireSlipRatioRearLeft;
-    private float tireSlipRatioRearRight;
-    private float wheelRotationSpeedFrontLeft;
-    private float wheelRotationSpeedFrontRight;
-    private float wheelRotationSpeedRearLeft;
-    private float wheelRotationSpeedRearRight;
-    private int wheelOnRumbleStripFrontLeft;
-    private int wheelOnRumbleStripFrontRight;
-    private int wheelOnRumbleStripRearLeft;
-    private int wheelOnRumbleStripRearRight;
-    private float wheelInPuddleDepthFrontLeft;
-    private float wheelInPuddleDepthFrontRight;
-    private float wheelInPuddleDepthRearLeft;
-    private float wheelInPuddleDepthRearRight;
-    private float surfaceRumbleFrontLeft;
-    private float surfaceRumbleFrontRight;
-    private float surfaceRumbleRearLeft;
-    private float surfaceRumbleRearRight;
-    private float tireSlipAngleFrontLeft;
-    private float tireSlipAngleFrontRight;
-    private float tireSlipAngleRearLeft;
-    private float tireSlipAngleRearRight;
-    private float tireCombinedSlipFrontLeft;
-    private float tireCombinedSlipFrontRight;
-    private float tireCombinedSlipRearLeft;
-    private float tireCombinedSlipRearRight;
-    private float suspensionTravelMetersFrontLeft;
-    private float suspensionTravelMetersFrontRight;
-    private float suspensionTravelMetersRearLeft;
-    private float suspensionTravelMetersRearRight;
-    private int carOrdinal;
-    private int carClass;
-    private int carPerformanceIndex;
-    private int drivetrainType;
-    private int numCylinders;
-    private float positionX;
-    private float positionY;
-    private float positionZ;
-    private float speed;
-    private float power;
-    private float torque;
-    private float tireTempFrontLeft;
-    private float tireTempFrontRight;
-    private float tireTempRearLeft;
-    private float tireTempRearRight;    // Todo: tire temp rear right seems to be the same as rear left.
-    private float boost;
-    private float fuel;
-    private float distanceTraveled;
-    private float bestLap;
-    private float lastLap;
-    private float currentLap;
-    private float currentRaceTime;
-    private short lapNumber;
-    private byte racePosition;
-    private byte accel;
-    private byte brake;
-    private byte clutch;
-    private byte handBrake;
-    private byte gear;
-    private byte steer;
-    private byte normalizedDrivingLine;
-    private byte normalizedAIBrakeDifference;
-    // endregion Forza data out
-
-    // region Calculated data
-    //
-    private float maxMeasuredRpm;
-    private float maxMeasuredAcceleration;
-    private float maxMeasuredDeceleration;
-    private float velocity;
-    private float angularVelocity;
-    private float normalizedAcceleration;
-    private float normalizedDeceleration;
-    private float wheelRpmDiffFrontAbsolute;
-    private float wheelRpmDiffFrontPercentage;
-    private float wheelRpmDiffRearAbsolute;
-    private float wheelRpmDiffRearPercentage;
-    private float wheelRpmDiffLeftAbsolute;
-    private float wheelRpmDiffLeftPercentage;
-    private float wheelRpmDiffRightAbsolute;
-    private float wheelRpmDiffRightPercentage;
-    private float shiftWarning;
-    private float shiftWarningThresholdLow;
-    private float shiftWarningThresholdHigh;
-    private float tireTempFront;
-    private float tireTempRear;
-    private float tireTempLeft;
-    private float tireTempRight;
-    // endregion Calculated data
-    // endregion Fields
-
-    // region Experimental
-    //
-    private String sector;
-    private int test;
-    @Bindable
-    public int getTest() {
-        return test;
-    }
-    public void countTest() {
-        test++;
-        notifyPropertyChanged(BR.test);
-    }
-    // endregion Experimental
+    private final CalculatedViewModel calculated = CalculatedViewModel.getInstance();
 
     // region Singleton
     //
@@ -153,9 +22,96 @@ public class TelemetryViewModel extends BaseObservable {
     }
     // endregion Singleton
 
-    // region Getter
+    // region Fields
     //
-    // region Forza data out
+    protected int isRaceOn;
+    protected int timestampMS;
+    protected float engineMaxRpm;
+    protected float engineIdleRpm;
+    protected float currentEngineRpm;
+    protected float accelerationX;
+    protected float accelerationY;
+    protected float accelerationZ;
+    protected float velocityX;
+    protected float velocityY;
+    protected float velocityZ;
+    protected float angularVelocityX;
+    protected float angularVelocityY;
+    protected float angularVelocityZ;
+    protected float yaw;
+    protected float pitch;
+    protected float roll;
+    protected float normalizedSuspensionTravelFrontLeft;
+    protected float normalizedSuspensionTravelFrontRight;
+    protected float normalizedSuspensionTravelRearLeft;
+    protected float normalizedSuspensionTravelRearRight;
+    protected float tireSlipRatioFrontLeft;
+    protected float tireSlipRatioFrontRight;
+    protected float tireSlipRatioRearLeft;
+    protected float tireSlipRatioRearRight;
+    protected float wheelRotationSpeedFrontLeft;
+    protected float wheelRotationSpeedFrontRight;
+    protected float wheelRotationSpeedRearLeft;
+    protected float wheelRotationSpeedRearRight;
+    protected int wheelOnRumbleStripFrontLeft;
+    protected int wheelOnRumbleStripFrontRight;
+    protected int wheelOnRumbleStripRearLeft;
+    protected int wheelOnRumbleStripRearRight;
+    protected float wheelInPuddleDepthFrontLeft;
+    protected float wheelInPuddleDepthFrontRight;
+    protected float wheelInPuddleDepthRearLeft;
+    protected float wheelInPuddleDepthRearRight;
+    protected float surfaceRumbleFrontLeft;
+    protected float surfaceRumbleFrontRight;
+    protected float surfaceRumbleRearLeft;
+    protected float surfaceRumbleRearRight;
+    protected float tireSlipAngleFrontLeft;
+    protected float tireSlipAngleFrontRight;
+    protected float tireSlipAngleRearLeft;
+    protected float tireSlipAngleRearRight;
+    protected float tireCombinedSlipFrontLeft;
+    protected float tireCombinedSlipFrontRight;
+    protected float tireCombinedSlipRearLeft;
+    protected float tireCombinedSlipRearRight;
+    protected float suspensionTravelMetersFrontLeft;
+    protected float suspensionTravelMetersFrontRight;
+    protected float suspensionTravelMetersRearLeft;
+    protected float suspensionTravelMetersRearRight;
+    protected int carOrdinal;
+    protected int carClass;
+    protected int carPerformanceIndex;
+    protected int drivetrainType;
+    protected int numCylinders;
+    protected float positionX;
+    protected float positionY;
+    protected float positionZ;
+    protected float speed;
+    protected float power;
+    protected float torque;
+    protected float tireTempFrontLeft;
+    protected float tireTempFrontRight;
+    protected float tireTempRearLeft;
+    protected float tireTempRearRight;    // Todo: tire temp rear right seems to be the same as rear left.
+    protected float boost;
+    protected float fuel;
+    protected float distanceTraveled;
+    protected float bestLap;
+    protected float lastLap;
+    protected float currentLap;
+    protected float currentRaceTime;
+    protected short lapNumber;
+    protected byte racePosition;
+    protected byte accel;
+    protected byte brake;
+    protected byte clutch;
+    protected byte handBrake;
+    protected byte gear;
+    protected byte steer;
+    protected byte normalizedDrivingLine;
+    protected byte normalizedAIBrakeDifference;
+    // endregion Fields
+
+    // region Getter
     //
     @Bindable
     public int getIsRaceOn() {
@@ -499,22 +455,22 @@ public class TelemetryViewModel extends BaseObservable {
 
     @Bindable
     public float getTireTempFrontLeftCelsius() {
-        return (tireTempFrontLeft - 32f) / 1.8f;
+        return convertFahrenheitToCelsius(tireTempFrontLeft);
     }
 
     @Bindable
     public float getTireTempFrontRightCelsius() {
-        return (tireTempFrontRight - 32f) / 1.8f;
+        return convertFahrenheitToCelsius(tireTempFrontRight);
     }
 
     @Bindable
     public float getTireTempRearLeftCelsius() {
-        return (tireTempRearLeft - 32f) / 1.8f;
+        return convertFahrenheitToCelsius(tireTempRearLeft);
     }
 
     @Bindable
     public float getTireTempRearRightCelsius() {
-        return (tireTempRearRight - 32f) / 1.8f;
+        return convertFahrenheitToCelsius(tireTempRearRight);
     }
 
     @Bindable
@@ -524,7 +480,7 @@ public class TelemetryViewModel extends BaseObservable {
 
     @Bindable
     public float getBoostBar() {
-        return boost * 0.06894757f;
+        return convertPsiToBar(boost);
     }
 
     @Bindable
@@ -533,8 +489,13 @@ public class TelemetryViewModel extends BaseObservable {
     }
 
     @Bindable
-    public float getDistanceTraveled() {
+    public float getDistanceTraveledTotal() {
         return distanceTraveled;
+    }
+
+    @Bindable
+    public float getDistanceTraveledLap() {
+        return calculated.track.getDistanceTraveledLap(distanceTraveled);
     }
 
     @Bindable
@@ -606,163 +567,9 @@ public class TelemetryViewModel extends BaseObservable {
     public byte getNormalizedAIBrakeDifference() {
         return normalizedAIBrakeDifference;
     }
-    // endregion Forza data out
-
-    // region Calculated data
-    //
-    @Bindable
-    public float getMaxMeasuredRpm() {
-        return maxMeasuredRpm;
-    }
-
-    @Bindable
-    public float getMaxMeasuredAcceleration() {
-        return maxMeasuredAcceleration;
-    }
-
-    @Bindable
-    public float getMaxMeasuredDeceleration() {
-        return maxMeasuredDeceleration;
-    }
-
-    @Bindable
-    public float getVelocityMps() {
-        return velocity;
-    }
-
-    @Bindable
-    public float getVelocityKph() {
-        return velocity * 3.6f;
-    }
-
-    @Bindable
-    public float getVelocityMph() {
-        return velocity * 2.23693629f;
-    }
-
-    @Bindable
-    public float getAngularVelocity() {
-        return angularVelocity;
-    }
-
-    @Bindable
-    public float getNormalizedAcceleration() {
-        return normalizedAcceleration;
-    }
-
-    @Bindable
-    public float getNormalizedDeceleration() {
-        return normalizedDeceleration;
-    }
-
-    @Bindable
-    public float getWheelRpmDiffFrontAbsolute() {
-        return wheelRpmDiffFrontAbsolute;
-    }
-
-    @Bindable
-    public float getWheelRpmDiffFrontPercentage() {
-        return wheelRpmDiffFrontPercentage;
-    }
-
-    @Bindable
-    public float getWheelRpmDiffRearAbsolute() {
-        return wheelRpmDiffRearAbsolute;
-    }
-
-    @Bindable
-    public float getWheelRpmDiffRearPercentage() {
-        return wheelRpmDiffRearPercentage;
-    }
-
-    @Bindable
-    public float getWheelRpmDiffLeftAbsolute() {
-        return wheelRpmDiffLeftAbsolute;
-    }
-
-    @Bindable
-    public float getWheelRpmDiffLeftPercentage() {
-        return wheelRpmDiffLeftPercentage;
-    }
-
-    @Bindable
-    public float getWheelRpmDiffRightAbsolute() {
-        return wheelRpmDiffRightAbsolute;
-    }
-
-    @Bindable
-    public float getWheelRpmDiffRightPercentage() {
-        return wheelRpmDiffRightPercentage;
-    }
-
-    @Bindable
-    public float getShiftWarning() {
-        return shiftWarning;
-    }
-
-    @Bindable
-    public float getShiftWarningThresholdLow() {
-        return shiftWarningThresholdLow;
-    }
-
-    @Bindable
-    public float getShiftWarningThresholdHigh() {
-        return shiftWarningThresholdHigh;
-    }
-
-    @Bindable
-    public float getTireTempFrontFahrenheit() {
-        return tireTempFront;
-    }
-
-    @Bindable
-    public float getTireTempRearFahrenheit() {
-        return tireTempRear;
-    }
-
-    @Bindable
-    public float getTireTempLeftFahrenheit() {
-        return tireTempLeft;
-    }
-
-    @Bindable
-    public float getTireTempRightFahrenheit() {
-        return tireTempRight;
-    }
-
-    @Bindable
-    public float getTireTempFrontCelsius() {
-        return (tireTempFront - 32f) / 1.8f;
-    }
-
-    @Bindable
-    public float getTireTempRearCelsius() {
-        return (tireTempRear - 32f) / 1.8f;
-    }
-
-    @Bindable
-    public float getTireTempLeftCelsius() {
-        return (tireTempLeft - 32f) / 1.8f;
-    }
-
-    @Bindable
-    public float getTireTempRightCelsius() {
-        return (tireTempRight - 32f) / 1.8f;
-    }
-
-    @Bindable
-    public String getSector() {
-        if (sector != null) {
-            return sector;
-        }
-        return "null";
-    }
-    // endregion Calculated data
     // endregion Getter
 
     // region Setter
-    //
-    // region Forza data out
     //
     public void setIsRaceOn(int isRaceOn) {
         if (this.isRaceOn != isRaceOn) {
@@ -794,8 +601,8 @@ public class TelemetryViewModel extends BaseObservable {
 
     public void setCurrentEngineRpm(float currentEngineRpm) {
         if (this.currentEngineRpm != currentEngineRpm) {
-            if (maxMeasuredRpm < currentEngineRpm) {
-                maxMeasuredRpm = currentEngineRpm;
+            if (calculated.maxMeasuredRpm < currentEngineRpm) {
+                calculated.maxMeasuredRpm = currentEngineRpm;
             }
             this.currentEngineRpm = currentEngineRpm;
             notifyPropertyChanged(BR.currentEngineRpm);
@@ -1265,7 +1072,8 @@ public class TelemetryViewModel extends BaseObservable {
     public void setDistanceTraveled(float distanceTraveled) {
         if (this.distanceTraveled != distanceTraveled) {
             this.distanceTraveled = distanceTraveled;
-            notifyPropertyChanged(BR.distanceTraveled);
+            notifyPropertyChanged(BR.distanceTraveledTotal);
+            notifyPropertyChanged(BR.distanceTraveledLap);
         }
     }
 
@@ -1366,175 +1174,16 @@ public class TelemetryViewModel extends BaseObservable {
             notifyPropertyChanged(BR.normalizedAIBrakeDifference);
         }
     }
-    // endregion Forza data out
-
-    // region Calculated data
-    //
-    public void setNormalizedAcceleration(float normalizedAcceleration) {
-        if (this.normalizedAcceleration != normalizedAcceleration) {
-            if (maxMeasuredAcceleration < normalizedAcceleration) {
-                maxMeasuredAcceleration = normalizedAcceleration;
-            }
-            this.normalizedAcceleration = normalizedAcceleration;
-            notifyPropertyChanged(BR.normalizedAcceleration);
-        }
-    }
-
-    public void setNormalizedDeceleration(float normalizedDeceleration) {
-        if (this.normalizedDeceleration != normalizedDeceleration) {
-            if (maxMeasuredDeceleration < normalizedDeceleration) {
-                maxMeasuredDeceleration = normalizedDeceleration;
-            }
-            this.normalizedDeceleration = normalizedDeceleration;
-            notifyPropertyChanged(BR.normalizedDeceleration);
-        }
-    }
-
-    public void setWheelRpmDiffFrontAbsolute(float wheelRpmDiffFrontAbsolute) {
-        if (this.wheelRpmDiffFrontAbsolute != wheelRpmDiffFrontAbsolute) {
-            this.wheelRpmDiffFrontAbsolute = wheelRpmDiffFrontAbsolute;
-            notifyPropertyChanged(BR.wheelRpmDiffFrontAbsolute);
-        }
-    }
-
-    public void setWheelRpmDiffFrontPercentage(float wheelRpmDiffFrontPercentage) {
-        if (this.wheelRpmDiffFrontPercentage != wheelRpmDiffFrontPercentage) {
-            this.wheelRpmDiffFrontPercentage = wheelRpmDiffFrontPercentage;
-            notifyPropertyChanged(BR.wheelRpmDiffFrontPercentage);
-        }
-    }
-
-    public void setWheelRpmDiffRearAbsolute(float wheelRpmDiffRearAbsolute) {
-        if (this.wheelRpmDiffRearAbsolute != wheelRpmDiffRearAbsolute) {
-            this.wheelRpmDiffRearAbsolute = wheelRpmDiffRearAbsolute;
-            notifyPropertyChanged(BR.wheelRpmDiffRearAbsolute);
-        }
-    }
-
-    public void setWheelRpmDiffRearPercentage(float wheelRpmDiffRearPercentage) {
-        if (this.wheelRpmDiffRearPercentage != wheelRpmDiffRearPercentage) {
-            this.wheelRpmDiffRearPercentage = wheelRpmDiffRearPercentage;
-            notifyPropertyChanged(BR.wheelRpmDiffRearPercentage);
-        }
-    }
-
-    public void setWheelRpmDiffLeftAbsolute(float wheelRpmDiffLeftAbsolute) {
-        if (this.wheelRpmDiffLeftAbsolute != wheelRpmDiffLeftAbsolute) {
-            this.wheelRpmDiffLeftAbsolute = wheelRpmDiffLeftAbsolute;
-            notifyPropertyChanged(BR.wheelRpmDiffLeftAbsolute);
-        }
-    }
-
-    public void setWheelRpmDiffLeftPercentage(float wheelRpmDiffLeftPercentage) {
-        if (this.wheelRpmDiffLeftPercentage != wheelRpmDiffLeftPercentage) {
-            this.wheelRpmDiffLeftPercentage = wheelRpmDiffLeftPercentage;
-            notifyPropertyChanged(BR.wheelRpmDiffLeftPercentage);
-        }
-    }
-
-    public void setWheelRpmDiffRightAbsolute(float wheelRpmDiffRightAbsolute) {
-        if (this.wheelRpmDiffRightAbsolute != wheelRpmDiffRightAbsolute) {
-            this.wheelRpmDiffRightAbsolute = wheelRpmDiffRightAbsolute;
-            notifyPropertyChanged(BR.wheelRpmDiffRightAbsolute);
-        }
-    }
-
-    public void setWheelRpmDiffRightPercentage(float wheelRpmDiffRightPercentage) {
-        if (this.wheelRpmDiffRightPercentage != wheelRpmDiffRightPercentage) {
-            this.wheelRpmDiffRightPercentage = wheelRpmDiffRightPercentage;
-            notifyPropertyChanged(BR.wheelRpmDiffRightPercentage);
-        }
-    }
-
-    public void setShiftWarning(float shiftWarning) {
-        if (this.shiftWarning != shiftWarning) {
-            this.shiftWarning = shiftWarning;
-            notifyPropertyChanged(BR.shiftWarning);
-        }
-    }
-
-    public void setShiftWarningThresholdLow(float shiftWarningThresholdLow) {
-        if (this.shiftWarningThresholdLow != shiftWarningThresholdLow) {
-            this.shiftWarningThresholdLow = shiftWarningThresholdLow;
-            notifyPropertyChanged(BR.gear);
-        }
-    }
-
-    public void setShiftWarningThresholdHigh(float shiftWarningThresholdHigh) {
-        if (this.shiftWarningThresholdHigh != shiftWarningThresholdHigh) {
-            this.shiftWarningThresholdHigh = shiftWarningThresholdHigh;
-            notifyPropertyChanged(BR.shiftWarningThresholdHigh);
-        }
-    }
-
-    public void calcVelocity() {
-        float velocity = getVector3DLength(velocityX, velocityY, velocityZ);
-        if (this.velocity != velocity) {
-            this.velocity = velocity;
-            notifyPropertyChanged(BR.velocityMps);
-            notifyPropertyChanged(BR.velocityKph);
-            notifyPropertyChanged(BR.velocityMph);
-        }
-    }
-
-    public void calcAngularVelocity() {
-        float angularVelocity = getVector3DLength(angularVelocityX, angularVelocityY, angularVelocityZ);
-        if (this.angularVelocity != angularVelocity) {
-            this.angularVelocity = angularVelocity;
-            notifyPropertyChanged(BR.angularVelocity);
-        }
-    }
-
-    public void calcTireTempFront() {
-        float tireTempFront = (tireTempFrontLeft + tireTempFrontRight) / 2f;
-        if (this.tireTempFront != tireTempFront) {
-            this.tireTempFront = tireTempFront;
-            notifyPropertyChanged(BR.tireTempFrontFahrenheit);
-            notifyPropertyChanged(BR.tireTempFrontCelsius);
-        }
-    }
-
-    public void calcTireTempRear() {
-        float tireTempRear = (tireTempRearLeft + tireTempRearRight) / 2f;
-        if (this.tireTempFront != tireTempRear) {
-            this.tireTempRear = tireTempRear;
-            notifyPropertyChanged(BR.tireTempRearFahrenheit);
-            notifyPropertyChanged(BR.tireTempRearCelsius);
-        }
-    }
-
-    public void calcTireTempLeft() {
-        float tireTempLeft = (tireTempFrontLeft + tireTempRearLeft) / 2f;
-        if (this.tireTempFront != tireTempLeft) {
-            this.tireTempLeft = tireTempLeft;
-            notifyPropertyChanged(BR.tireTempLeftFahrenheit);
-            notifyPropertyChanged(BR.tireTempLeftCelsius);
-        }
-    }
-
-    public void calcTireTempRight() {
-        float tireTempRight = (tireTempFrontRight + tireTempRearRight) / 2f;
-        if (this.tireTempFront != tireTempRight) {
-            this.tireTempRight = tireTempRight;
-            notifyPropertyChanged(BR.tireTempRightFahrenheit);
-            notifyPropertyChanged(BR.tireTempRightCelsius);
-        }
-    }
-
-    public void calcSector() {
-        String sector = Sector.getSector(positionX, positionZ);
-        if (this.sector == null || this.sector.equals(sector)) {
-            this.sector = sector;
-            notifyPropertyChanged(BR.sector);
-        }
-    }
-    // endregion Calculated data
     // endregion Setter
 
     // region Utility methods
     //
-    private float getVector3DLength(float x, float y, float z) {
-        return (float) Math.sqrt(x*x + y*y + z*z);
+    private float convertFahrenheitToCelsius(float temperature) {
+        return (temperature - 32f) / 1.8f;
+    }
+
+    private float convertPsiToBar(float pressure) {
+        return pressure * 0.06894757f;
     }
     // endregion Utility methods
 }
