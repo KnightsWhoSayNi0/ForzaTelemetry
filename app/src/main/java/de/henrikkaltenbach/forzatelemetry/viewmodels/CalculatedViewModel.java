@@ -24,7 +24,8 @@ public class CalculatedViewModel extends BaseObservable {
     protected static CalculatedViewModel instance;
 
     protected CalculatedViewModel() {
-        track = Track.NO_TRACK;
+        // track = Track.NO_TRACK;
+        track = Environment.getEnvironment("Nürburgring").getTrack("Nordschleife");
         sector = Sector.NO_SECTOR.getName();
     }
 

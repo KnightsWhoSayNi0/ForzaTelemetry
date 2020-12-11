@@ -1,5 +1,5 @@
 <resources>
-    <!-- Labels. -->
+    <!-- Labels -->
     <string name="app_name">Forza Telemetry</string>
     <string name="rpm">RPM</string>
     <string name="gear">Gear</string>
@@ -11,18 +11,21 @@
     <string name="rear_left">RL</string>
     <string name="rear_right">RR</string>
     <string name="position">Position</string>
-    <string name="positionX">X</string>
-    <string name="positionY">Y</string>
-    <string name="positionZ">Z</string>
+    <string name="positionX">X:</string>
+    <string name="positionY">Y:</string>
+    <string name="positionZ">Z:</string>
     <string name="distance">Distance</string>
     <string name="no_sector">no sector</string>
-    <!-- Units. -->
+    <string name="in_lap">in Lap</string>
+
+    <!-- Units -->
     <string name="bar">bar</string>
     <string name="celsius">°C</string>
     <string name="fahrenheit">°F</string>
     <string name="psi">psi</string>
     <string name="meter">m</string>
-    <!-- Format strings. -->
+
+    <!-- Format strings -->
     <string name="format_d">%d</string>
     <string name="format_f">%f</string>
     <string name="format_f3p2">%3.2f</string>
@@ -31,6 +34,8 @@
     <string name="format_f5p1">%5.1f</string>
     <string name="format_f6p2">%6.2f</string>
     <string name="format_f8p2">%8.2f</string>
+
+    <!--  -->
     <string name="title_activity_settings">SettingsActivity</string>
 
     <!-- Preference Titles -->

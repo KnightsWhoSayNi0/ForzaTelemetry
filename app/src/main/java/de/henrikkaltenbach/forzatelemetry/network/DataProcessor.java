@@ -22,6 +22,7 @@ public class DataProcessor {
     protected void parseData(byte[] data, int counter) {
         telemetry.setIsRaceOn(getBytes(data, 0, 4).getInt());
         telemetry.setTimestampMS(getBytes(data, 4, 8).getInt());
+
         if (telemetry.getIsRaceOn() == 1 && counter % 2 == 0) {
             // region Forza data out
             //

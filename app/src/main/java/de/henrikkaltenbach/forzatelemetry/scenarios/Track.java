@@ -7,11 +7,11 @@ public class Track {
 
     static {
         NUERBURGRING = new Track[]{
-                new Track("Full Circuit", 25990f, null),    // Todo: measure exact length of the 'Full Circuit'.
-                new Track("Nordschleife", 20808f, Sector.NORDSCHLEIFE),
-                new Track("GP Circuit", 5150f, null)    // Todo: measure exact length of the 'GP Circuit'.
+                new Track("Full Circuit", 25990f, null),    // Todo: determine sectors of the 'Full Circuit'.
+                new Track("Nordschleife", 20810f, Sector.NORDSCHLEIFE),
+                new Track("GP Circuit", 5150f, null)    // Todo: determine sectors of the 'GP Circuit'.
         };
-        NO_TRACK = new Track("no track", 1f, new Sector[]{Sector.NO_SECTOR});
+        NO_TRACK = new Track("no track", Float.POSITIVE_INFINITY, new Sector[]{Sector.NO_SECTOR});
     }
 
     protected final String name;
@@ -25,12 +25,12 @@ public class Track {
     }
 
     public String getSector(float distanceTraveled) {
-        distanceTraveled = getDistanceTraveledLap(distanceTraveled);
-        for (Sector sector : sectors) {
-            if (sector.getStart() < distanceTraveled && distanceTraveled < sector.getEnd()) {
-                return sector.getName();
-            }
-        }
+//        distanceTraveled = getDistanceTraveledLap(distanceTraveled);
+//        for (Sector sector : sectors) {
+//            if (sector.getStart() < distanceTraveled && distanceTraveled < sector.getEnd()) {
+//                return sector.getName();
+//            }
+//        }
         return Sector.NO_SECTOR.getName();
     }
 
