@@ -1,6 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Labels -->
+    <!-- App labels -->
     <string name="app_name">Forza Telemetry</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+
+    <!-- Telemetry labels -->
     <string name="rpm">RPM</string>
     <string name="gear">Gear</string>
     <string name="boost">Boost</string>
@@ -35,20 +40,24 @@
     <string name="format_f6p2">%6.2f</string>
     <string name="format_f8p2">%8.2f</string>
 
-    <!--  -->
-    <string name="title_activity_settings">SettingsActivity</string>
+    <!-- Preference categories -->
+    <string name="network">Network</string>
+    <string name="data_processing">Data processing</string>
 
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <!-- Network preferences -->
+    <string name="ipv4">IPv4 Address</string>
+    <string name="ipv4_address">aaa.bbb.ccc.ddd</string>
+    <string name="port">Port to listen on</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <!-- Data processing preferences -->
+    <string name="race_on">Race on</string>
+    <string name="processing_rate">Processing rate for telemetry data</string>
+    <string name="calculation_rate">Calculation rate for additional data</string>
+    <string name="sector_rate">Rate for calculating the sector</string>
 
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <!-- About -->
+    <string name="app_icon_description">App Icon</string>
+    <string name="version_placeholder">Version m.m.b.r</string>
+    <string name="author">developed by Henrik Kaltenbach</string>
+    <string name="license">published under GNU General Public License v3.0</string>
 </resources>
