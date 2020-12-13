@@ -2,16 +2,20 @@ package de.henrikkaltenbach.forzatelemetry.scenarios;
 
 public class Track {
 
-    protected static final Track[] NUERBURGRING;
     public static final Track NO_TRACK;
+    protected static final Track[] NUERBURGRING;
+    protected static final Track[] HOCKENHEIMRING;
 
     static {
-        NUERBURGRING = new Track[]{
-                new Track("Full Circuit", 25990f, null),    // Todo: determine sectors of the 'Full Circuit'.
-                new Track("Nordschleife", 20810f, Sector.NORDSCHLEIFE),
-                new Track("GP Circuit", 5150f, null)    // Todo: determine sectors of the 'GP Circuit'.
-        };
         NO_TRACK = new Track("no track", Float.POSITIVE_INFINITY, new Sector[]{Sector.NO_SECTOR});
+        NUERBURGRING = new Track[]{
+                new Track("Full Circuit", 25990f, Sector.NUERBURGRING_FULL_CIRCUIT),
+                new Track("Nordschleife", 20810f, Sector.NUERBURGRING_NORDSCHLEIFE),
+                new Track("GP Circuit", 5150f, Sector.NUERBURGRING_GP_CIRCUIT)
+        };
+        HOCKENHEIMRING = new Track[]{
+                NO_TRACK
+        };
     }
 
     protected final String name;

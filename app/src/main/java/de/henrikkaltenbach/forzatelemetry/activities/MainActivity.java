@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.preference.PreferenceManager;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+
+        AppCompatDelegate.setDefaultNightMode(Integer.parseInt(sharedPreferences.getString(getString(R.string.key_theme), getString(R.string.default_theme))));
 
         startListener(sharedPreferences);
     }
@@ -80,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
                 int sectorRate = Integer.parseInt(sharedPreferences.getString(getString(R.string.key_sector_calculation_rate), getString(R.string.default_sector_calculation_rate)));
                 listener.setSectorCalculationRate(sectorRate);
                 return;
+            case "theme":
+                AppCompatDelegate.setDefaultNightMode(Integer.parseInt(sharedPreferences.getString(getString(R.string.key_theme), getString(R.string.default_theme))));
+                return;
             default:
         }
     }
@@ -92,7 +99,13 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     }
 
     private void startListener(SharedPreferences sharedPreferences) {
+        final int MAX_PORT = 65535;
         int port = Integer.parseInt(sharedPreferences.getString(getString(R.string.key_port), getString(R.string.default_port)));
+        if (port > MAX_PORT) {
+            sharedPreferences.edit().putString(getString(R.string.key_port), getString(R.string.default_port)).commit();
+            port = Integer.parseInt(getString(R.string.default_port));
+            Toast.makeText(getApplicationContext(), getString(R.string.toast_port_reset), Toast.LENGTH_SHORT).show();
+        }
         if (listener != null) {
             listener.close();
         }

@@ -20,6 +20,7 @@ public class UdpListener extends Thread {
     public void run() {
         try {
             socket = new DatagramSocket(port);
+            System.out.println("[INFO]: UDP listen on port " + port);
             byte[] buffer = new byte[320];
             DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
             boolean run = true;

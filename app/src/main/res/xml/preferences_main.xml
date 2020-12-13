@@ -7,15 +7,13 @@
         <Preference
                 android:key="@string/key_ip_v4_address"
                 android:title="@string/pref_ipv4_address"
-                android:summary="@string/pref_ipv4_address"/>
+                android:summary="@string/summary_ipv4_address"/>
         <EditTextPreference
                 android:key="@string/key_port"
                 android:title="@string/pref_port"
                 android:summary="@string/summary_race_on"
-                android:inputType="number"
-                android:digits="@string/digits_zero_nine"
                 android:defaultValue="@string/default_port"
-                app:useSimpleSummaryProvider="true"/>   <!-- Todo: allow only numbers. -->
+                app:useSimpleSummaryProvider="true"/>
     </PreferenceCategory>
     <PreferenceCategory
             android:key="@string/key_data_processing"
@@ -47,5 +45,15 @@
                 android:entryValues="@array/entry_values_processing_rate"
                 android:defaultValue="@string/default_sector_calculation_rate"
                 app:useSimpleSummaryProvider="true"/>   <!-- Todo: default value does not work. -->
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:title="@string/pref_cat_look_and_feel">
+        <ListPreference
+                android:key="@string/key_theme"
+                android:title="@string/pref_theme"
+                android:entries="@array/entries_theme"
+                android:entryValues="@array/entry_values_theme"
+                android:defaultValue="@string/default_theme"
+                app:useSimpleSummaryProvider="true"/>
     </PreferenceCategory>
 </PreferenceScreen>

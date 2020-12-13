@@ -2,11 +2,17 @@ package de.henrikkaltenbach.forzatelemetry.scenarios;
 
 public class Sector {
 
-    protected static final Sector[] NORDSCHLEIFE;
     public static final Sector NO_SECTOR;
+    protected static final Sector[] NUERBURGRING_FULL_CIRCUIT;
+    protected static final Sector[] NUERBURGRING_NORDSCHLEIFE;
+    protected static final Sector[] NUERBURGRING_GP_CIRCUIT;
 
     static {
-        NORDSCHLEIFE = new Sector[]{
+        NO_SECTOR = new Sector("no sector", 0f, 0f);
+        NUERBURGRING_FULL_CIRCUIT = new Sector[]{
+            NO_SECTOR
+        };
+        NUERBURGRING_NORDSCHLEIFE = new Sector[]{
                 new Sector("Hatzenbach", 0f, 1300f),
                 new Sector("Hocheichen", 1300f, 1822f),
                 new Sector("Quiddelbacher-Höhe", 1822f, 2230f),
@@ -53,7 +59,9 @@ public class Sector {
                 new Sector("Hohenrain", 20275f, 20575f),
                 new Sector("Start-Ziel-Gerade", 20575f, 20808f)
         };
-        NO_SECTOR = new Sector("no sector", 0f, 0f);
+        NUERBURGRING_GP_CIRCUIT = new Sector[]{
+            NO_SECTOR
+        };
     }
 
     private final String name;

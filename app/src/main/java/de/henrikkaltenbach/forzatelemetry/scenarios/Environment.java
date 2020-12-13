@@ -2,14 +2,14 @@ package de.henrikkaltenbach.forzatelemetry.scenarios;
 
 public class Environment {
 
-    private static final Environment[] ENVIRONMENTS;
     private static final Environment NO_ENVIRONMENT;
+    private static final Environment[] ENVIRONMENTS;
 
     static {
+        NO_ENVIRONMENT = new Environment("no environment", new Track[]{Track.NO_TRACK});
         ENVIRONMENTS = new Environment[]{
                 new Environment("Nürburgring", Track.NUERBURGRING)
         };
-        NO_ENVIRONMENT = new Environment("no environment", new Track[]{Track.NO_TRACK});
     }
 
     protected final String name;
