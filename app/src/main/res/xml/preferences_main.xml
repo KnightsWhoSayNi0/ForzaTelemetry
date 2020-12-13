@@ -41,8 +41,8 @@
         <ListPreference
                 android:key="@string/key_sector_calculation_rate"
                 android:title="@string/pref_sector_calculation_rate"
-                android:entries="@array/entries_processing_rate"
-                android:entryValues="@array/entry_values_processing_rate"
+                android:entries="@array/entries_sector_rate"
+                android:entryValues="@array/entry_values_sector_rate"
                 android:defaultValue="@string/default_sector_calculation_rate"
                 app:useSimpleSummaryProvider="true"/>   <!-- Todo: default value does not work. -->
     </PreferenceCategory>
@@ -54,6 +54,6 @@
                 android:entries="@array/entries_theme"
                 android:entryValues="@array/entry_values_theme"
                 android:defaultValue="@string/default_theme"
-                app:useSimpleSummaryProvider="true"/>
+                app:useSimpleSummaryProvider="true"/>   <!-- Todo: default value does not work. -->
     </PreferenceCategory>
 </PreferenceScreen>

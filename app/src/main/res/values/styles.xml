@@ -7,7 +7,7 @@
     </style>
 
     <!-- Main activity theme. -->
-    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowFullscreen">true</item>
         <item name="windowActionBar">false</item>

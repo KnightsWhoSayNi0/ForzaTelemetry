@@ -83,7 +83,7 @@
     <string name="default_race_on">true</string>
     <string name="default_processing_rate">2</string>
     <string name="default_calculation_rate">4</string>
-    <string name="default_sector_calculation_rate">11</string>
+    <string name="default_sector_calculation_rate">6</string>
     <string name="default_theme">3</string>
 
     <!-- Digits -->
