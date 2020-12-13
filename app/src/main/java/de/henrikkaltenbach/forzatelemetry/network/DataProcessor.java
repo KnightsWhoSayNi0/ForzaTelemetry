@@ -11,19 +11,45 @@ public class DataProcessor {
 
     private final TelemetryViewModel telemetry;
     private final CalculatedViewModel calculated;
+    private boolean raceOn;
+    private int processingRate;
+    private int calculationRate;
+    private int sectorCalculationRate;
 
-    protected DataProcessor() {
+    // region Singleton
+    //
+    private static DataProcessor instance;
+
+    private DataProcessor() {
         telemetry = TelemetryViewModel.getInstance();
         calculated = CalculatedViewModel.getInstance();
         calculated.setTelemetry(telemetry);
         telemetry.setCalculated(calculated);
+
+        raceOn = true;
+        processingRate = 2;
+        calculationRate = 4;
+        sectorCalculationRate = 30;
+    }
+
+    public static synchronized DataProcessor getInstance() {
+        if (instance == null) {
+            instance = new DataProcessor();
+        }
+        return instance;
+    }
+    // endregion Singleton
+
+    public void setPort(int port) {
+        calculated.setPort(port);
     }
 
     protected void parseData(byte[] data, int counter) {
         telemetry.setIsRaceOn(getBytes(data, 0, 4).getInt());
         telemetry.setTimestampMS(getBytes(data, 4, 8).getInt());
 
-        if (telemetry.getIsRaceOn() == 1 && counter % 2 == 0) {
+        // if (not raceOn or isRaceOn) and processing
+        if ((!raceOn || telemetry.getIsRaceOn() == 1) && counter % processingRate == 0) {
             // region Forza data out
             //
             telemetry.setEngineMaxRpm(getBytes(data, 8, 12).getFloat());
@@ -134,7 +160,7 @@ public class DataProcessor {
 
             // region Calculated data
             //
-            if (counter % 4 == 0) {
+            if (counter % calculationRate == 0) {
                 calculated.calcVelocity();
                 calculated.calcAngularVelocity();
                 calculated.calcTireTempAverageFront();
@@ -143,11 +169,27 @@ public class DataProcessor {
                 calculated.calcTireTempAverageRight();
             }
 
-            if (counter % 30 == 0) {
+            if (counter % sectorCalculationRate == 0) {
                 calculated.calcSector();
             }
             // endregion Calculated data
         }
+    }
+
+    public void setRaceOn(boolean raceOn) {
+        this.raceOn = raceOn;
+    }
+
+    public void setProcessingRate(int processingRate) {
+        this.processingRate = processingRate;
+    }
+
+    public void setCalculationRate(int calculationRate) {
+        this.calculationRate = calculationRate;
+    }
+
+    public void setSectorCalculationRate(int sectorCalculationRate) {
+        this.sectorCalculationRate = sectorCalculationRate;
     }
 
     private ByteBuffer getBytes(byte[] array, int offset, int length) {

@@ -34,7 +34,7 @@
                     android:layout_width="wrap_content"
                     android:text="@{calculated.sector}"
                     android:textAlignment="center"
-                    android:textColor="@{calculated.sector.equals(@string/no_sector) ? @color/red : @color/colorAccent}"
+                    android:textColor="@{calculated.sector.equals(@string/label_no_sector) ? @color/red : @color/yellow}"
                     android:textSize="36sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
                     android:id="@+id/tvDistance"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/distance"
+                    android:text="@string/label_distance"
                     android:textSize="30sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvSector"/>
@@ -62,7 +62,7 @@
                     android:id="@+id/tvMeter"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/meter"
+                    android:text="@string/unit_meter"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tvDistanceTraveledTotal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +72,7 @@
                     android:id="@+id/tvInLap"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/in_lap"
+                    android:text="@string/label_in_lap"
                     android:textSize="30sp"
                     app:layout_constraintEnd_toEndOf="@+id/tvDistance"
                     app:layout_constraintTop_toBottomOf="@+id/tvDistance"/>
@@ -90,7 +90,7 @@
                     android:id="@+id/tvMeter2"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/meter"
+                    android:text="@string/unit_meter"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tvDistanceTraveledLap"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -100,61 +100,61 @@
                     android:id="@+id/tvX"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:paddingEnd="0dp"
+                    android:paddingEnd="10dp"
                     android:paddingStart="10dp"
-                    android:text="@string/positionX"
-                    android:textSize="30sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"/>
+                    android:text="@string/label_positionX"
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
+                    app:layout_constraintEnd_toStartOf="@+id/tvPositionX"/>
             <TextView
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvPositionX"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@{@string/format_f6p2(telemetry.positionX)}"
-                    android:textSize="30sp"
-                    app:layout_constraintStart_toEndOf="@+id/tvX"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"/>
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
+                    app:layout_constraintEnd_toStartOf="@+id/tvY"/>
             <TextView
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvY"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:paddingEnd="0dp"
+                    android:paddingEnd="10dp"
                     android:paddingStart="10dp"
-                    android:text="@string/positionY"
-                    android:textSize="30sp"
-                    app:layout_constraintStart_toEndOf="@+id/tvPositionX"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"/>
+                    android:text="@string/label_positionY"
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
+                    app:layout_constraintEnd_toStartOf="@+id/tvPositionY"/>
             <TextView
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvPositionY"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@{@string/format_f6p2(telemetry.positionY)}"
-                    android:textSize="30sp"
-                    app:layout_constraintStart_toEndOf="@+id/tvY"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"/>
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
+                    app:layout_constraintEnd_toStartOf="@+id/tvZ"/>
             <TextView
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvZ"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:paddingEnd="0dp"
+                    android:paddingEnd="10dp"
                     android:paddingStart="10dp"
-                    android:text="@string/positionZ"
-                    android:textSize="30sp"
-                    app:layout_constraintStart_toEndOf="@+id/tvPositionY"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"/>
+                    android:text="@string/label_positionZ"
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
+                    app:layout_constraintEnd_toStartOf="@+id/tvPositionZ"/>
             <TextView
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvPositionZ"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@{@string/format_f6p2(telemetry.positionZ)}"
-                    android:textSize="30sp"
-                    app:layout_constraintStart_toEndOf="@+id/tvZ"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"/>
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
+                    app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 

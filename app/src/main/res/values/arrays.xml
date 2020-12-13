@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Processing rate Preference -->
-    <string-array name="processing_rate">
-        <item>60 ¹⁄ₛ</item>
-        <item>30 ¹⁄ₛ</item>
-        <item>20 ¹⁄ₛ</item>
-        <item>15 ¹⁄ₛ</item>
-        <item>12 ¹⁄ₛ</item>
-        <item>10 ¹⁄ₛ</item>
-        <item>6 ¹⁄ₛ</item>
-        <item>5 ¹⁄ₛ</item>
-        <item>4 ¹⁄ₛ</item>
-        <item>3 ¹⁄ₛ</item>
-        <item>2 ¹⁄ₛ</item>
-        <item>1 ¹⁄ₛ</item>
+    <string-array name="entries_processing_rate">
+        <item>60</item>
+        <item>30</item>
+        <item>20</item>
+        <item>15</item>
+        <item>12</item>
+        <item>10</item>
+        <item>6</item>
+        <item>5</item>
+        <item>4</item>
+        <item>3</item>
+        <item>2</item>
+        <item>1</item>
     </string-array>
-    <string-array name="processing_rate_values">
+    <string-array name="entry_values_processing_rate">
         <item>1</item>
         <item>2</item>
         <item>3</item>

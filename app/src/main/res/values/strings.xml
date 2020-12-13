@@ -1,63 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App labels -->
+    <string name="action_about">About</string>
+    <string name="action_settings">Settings</string>
     <string name="app_name">Forza Telemetry</string>
-    <string name="settings">Settings</string>
-    <string name="about">About</string>
+    <string name="title_activity_about">About</string>
+    <string name="title_activity_settings">Settings</string>
 
     <!-- Telemetry labels -->
-    <string name="rpm">RPM</string>
-    <string name="gear">Gear</string>
-    <string name="boost">Boost</string>
-    <string name="tire_temp">Tire temp</string>
-    <string name="reverse">R</string>
-    <string name="front_left">FL</string>
-    <string name="front_right">FR</string>
-    <string name="rear_left">RL</string>
-    <string name="rear_right">RR</string>
-    <string name="position">Position</string>
-    <string name="positionX">X:</string>
-    <string name="positionY">Y:</string>
-    <string name="positionZ">Z:</string>
-    <string name="distance">Distance</string>
-    <string name="no_sector">no sector</string>
-    <string name="in_lap">in Lap</string>
+    <string name="label_boost">Boost</string>
+    <string name="label_distance">Distance</string>
+    <string name="label_front_left">FL</string>
+    <string name="label_front_right">FR</string>
+    <string name="label_gear">Gear</string>
+    <string name="label_in_lap">in Lap</string>
+    <string name="label_no_sector">no sector</string>
+    <string name="label_position">Position</string>
+    <string name="label_positionX">x:</string>
+    <string name="label_positionY">y:</string>
+    <string name="label_positionZ">z:</string>
+    <string name="label_rear_left">RL</string>
+    <string name="label_rear_right">RR</string>
+    <string name="label_reverse">R</string>
+    <string name="label_rpm">RPM</string>
+    <string name="label_tire_temp">Tire temp</string>
 
     <!-- Units -->
-    <string name="bar">bar</string>
-    <string name="celsius">°C</string>
-    <string name="fahrenheit">°F</string>
-    <string name="psi">psi</string>
-    <string name="meter">m</string>
+    <string name="unit_bar">bar</string>
+    <string name="unit_celsius">°C</string>
+    <string name="unit_fahrenheit">°F</string>
+    <string name="unit_meter">m</string>
+    <string name="unit_psi">psi</string>
 
     <!-- Format strings -->
     <string name="format_d">%d</string>
     <string name="format_f">%f</string>
     <string name="format_f3p2">%3.2f</string>
     <string name="format_f4p1">%4.1f</string>
-    <string name="format_f5p2">%5.2f</string>
     <string name="format_f5p1">%5.1f</string>
+    <string name="format_f5p2">%5.2f</string>
     <string name="format_f6p2">%6.2f</string>
     <string name="format_f8p2">%8.2f</string>
 
-    <!-- Preference categories -->
-    <string name="network">Network</string>
-    <string name="data_processing">Data processing</string>
-
-    <!-- Network preferences -->
-    <string name="ipv4">IPv4 Address</string>
-    <string name="ipv4_address">aaa.bbb.ccc.ddd</string>
-    <string name="port">Port to listen on</string>
-
-    <!-- Data processing preferences -->
-    <string name="race_on">Race on</string>
-    <string name="processing_rate">Processing rate for telemetry data</string>
-    <string name="calculation_rate">Calculation rate for additional data</string>
-    <string name="sector_rate">Rate for calculating the sector</string>
-
     <!-- About -->
     <string name="app_icon_description">App Icon</string>
-    <string name="version_placeholder">Version m.m.b.r</string>
     <string name="author">developed by Henrik Kaltenbach</string>
     <string name="license">published under GNU General Public License v3.0</string>
+    <string name="version_placeholder">Version m.m.b.r</string>
+
+    <!-- Preference categories -->
+    <string name="pref_cat_network">Network</string>
+    <string name="pref_cat_data_processing">Data processing</string>
+
+    <!-- Network preferences -->
+    <string name="pref_ipv4_address">IPv4 Address</string>
+    <string name="pref_port">Port to listen on</string>
+    <string name="summary_ipv4_address">aaa.bbb.ccc.ddd</string>
+
+    <!-- Data processing preferences -->
+    <string name="pref_race_on">Race must be on</string>
+    <string name="pref_processing_rate">Processing rate for telemetry data (¹⁄ₛ)</string>
+    <string name="pref_calculation_rate">Calculation rate for additional data (¹⁄ₛ)</string>
+    <string name="pref_sector_calculation_rate">Rate for calculating the sector (¹⁄ₛ)</string>
+    <string name="summary_race_on">Process data only if race is on</string>
+
+    <!-- Preference keys -->
+    <string name="key_ip_v4_address">ipV4Address</string>
+    <string name="key_port">port</string>
+    <string name="key_data_processing">dataProcessing</string>
+    <string name="key_race_on">raceOn</string>
+    <string name="key_processing_rate">processingRate</string>
+    <string name="key_calculation_rate">calculationRate</string>
+    <string name="key_sector_calculation_rate">sectorCalculationRate</string>
+
+    <!-- Default values -->
+    <string name="default_port">8192</string>
+    <string name="default_race_on">true</string>
+    <string name="default_processing_rate">2</string>
+    <string name="default_calculation_rate">4</string>
+    <string name="default_sector_calculation_rate">11</string>
+
+    <!-- Digits -->
+    <string name="digits_zero_nine">0123456789</string>
 </resources>

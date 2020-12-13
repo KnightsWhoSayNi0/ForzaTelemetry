@@ -37,6 +37,16 @@ public class CalculatedViewModel extends BaseObservable {
     }
     // endregion Singleton
 
+    private int port;
+    @Bindable
+    public String getPort() {
+        return String.valueOf(port);
+    }
+    public void setPort(int port) {
+        this.port = port;
+        notifyPropertyChanged(BR.port);
+    }
+
     // region Fields
     //
     protected float maxMeasuredRpm;

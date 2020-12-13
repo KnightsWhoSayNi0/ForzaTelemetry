@@ -2,16 +2,18 @@ package de.henrikkaltenbach.forzatelemetry.network;
 
 import java.io.IOException;
 import java.net.*;
+import java.util.Enumeration;
 
 public class UdpListener extends Thread {
 
-    private final int port;
     private final DataProcessor processor;
+    private final int port;
     private DatagramSocket socket;
 
     public UdpListener(int port) {
         this.port = port;
-        processor = new DataProcessor();
+        processor = DataProcessor.getInstance();
+        processor.setPort(port);
     }
 
     @Override
@@ -40,5 +42,21 @@ public class UdpListener extends Thread {
 
     public void close() {
         socket.close();
+    }
+
+    public void setRaceOn(boolean raceOn) {
+        processor.setRaceOn(raceOn);
+    }
+
+    public void setProcessingRate(int processingRate) {
+        processor.setProcessingRate(processingRate);
+    }
+
+    public void setCalculationRate(int calculationRate) {
+        processor.setCalculationRate(calculationRate);
+    }
+
+    public void setSectorCalculationRate(int sectorRate) {
+        processor.setSectorCalculationRate(sectorRate);
     }
 }

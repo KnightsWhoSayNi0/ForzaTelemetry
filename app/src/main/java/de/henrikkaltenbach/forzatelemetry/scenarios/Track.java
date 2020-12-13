@@ -25,12 +25,12 @@ public class Track {
     }
 
     public String getSector(float distanceTraveled) {
-//        distanceTraveled = getDistanceTraveledLap(distanceTraveled);
-//        for (Sector sector : sectors) {
-//            if (sector.getStart() < distanceTraveled && distanceTraveled < sector.getEnd()) {
-//                return sector.getName();
-//            }
-//        }
+        distanceTraveled = getDistanceTraveledLap(distanceTraveled);
+        for (Sector sector : sectors) {
+            if (sector.getStart() < distanceTraveled && distanceTraveled < sector.getEnd()) {
+                return sector.getName();
+            }
+        }
         return Sector.NO_SECTOR.getName();
     }
 
