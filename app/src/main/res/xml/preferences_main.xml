@@ -27,32 +27,47 @@
         <ListPreference
                 android:key="@string/key_processing_rate"
                 android:title="@string/pref_processing_rate"
-                android:entries="@array/entries_processing_rate"
-                android:entryValues="@array/entry_values_processing_rate"
+                android:entries="@array/entries_processing_rates"
+                android:entryValues="@array/entry_values_processing_rates"
                 android:defaultValue="@string/default_processing_rate"
                 app:useSimpleSummaryProvider="true"/>
         <ListPreference
                 android:key="@string/key_calculation_rate"
                 android:title="@string/pref_calculation_rate"
-                android:entries="@array/entries_processing_rate"
-                android:entryValues="@array/entry_values_processing_rate"
+                android:entries="@array/entries_processing_rates"
+                android:entryValues="@array/entry_values_processing_rates"
                 android:defaultValue="@string/default_calculation_rate"
                 app:useSimpleSummaryProvider="true"/>
         <ListPreference
                 android:key="@string/key_sector_calculation_rate"
                 android:title="@string/pref_sector_calculation_rate"
-                android:entries="@array/entries_sector_rate"
-                android:entryValues="@array/entry_values_sector_rate"
+                android:entries="@array/entries_sector_rates"
+                android:entryValues="@array/entry_values_sector_rates"
                 android:defaultValue="@string/default_sector_calculation_rate"
                 app:useSimpleSummaryProvider="true"/>   <!-- Todo: default value does not work. -->
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:title="@string/pref_cat_environment_and_track">
+        <ListPreference
+                android:key="@string/key_environment"
+                android:title="@string/pref_environment"
+                android:entries="@array/environments"
+                android:entryValues="@array/environments"
+                app:useSimpleSummaryProvider="true"/>
+        <ListPreference
+                android:key="@string/key_track"
+                android:title="@string/pref_track"
+                android:entries="@array/tracks"
+                android:entryValues="@array/tracks"
+                app:useSimpleSummaryProvider="true"/>
     </PreferenceCategory>
     <PreferenceCategory
             android:title="@string/pref_cat_look_and_feel">
         <ListPreference
                 android:key="@string/key_theme"
                 android:title="@string/pref_theme"
-                android:entries="@array/entries_theme"
-                android:entryValues="@array/entry_values_theme"
+                android:entries="@array/entries_themes"
+                android:entryValues="@array/entry_values_themes"
                 android:defaultValue="@string/default_theme"
                 app:useSimpleSummaryProvider="true"/>   <!-- Todo: default value does not work. -->
     </PreferenceCategory>

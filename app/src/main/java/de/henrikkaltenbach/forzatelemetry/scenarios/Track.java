@@ -38,6 +38,10 @@ public class Track {
         return Sector.NO_SECTOR.getName();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public float getDistanceTraveledLap(float distanceTraveled) {
         while (distanceTraveled < 0f) {
             distanceTraveled += length;

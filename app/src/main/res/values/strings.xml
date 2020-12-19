@@ -51,6 +51,7 @@
     <!-- Preference categories -->
     <string name="pref_cat_network">Network</string>
     <string name="pref_cat_data_processing">Data processing</string>
+    <string name="pref_cat_environment_and_track">Environment and track</string>
     <string name="pref_cat_look_and_feel">Look and feel</string>
 
     <!-- Network preferences -->
@@ -65,6 +66,10 @@
     <string name="pref_sector_calculation_rate">Rate for calculating the sector (¹⁄ₛ)</string>
     <string name="summary_race_on">Process data only if race is on</string>
 
+    <!-- Environment and track preferences -->
+    <string name="pref_environment">Environment</string>
+    <string name="pref_track">Track</string>
+
     <!-- Look and feel preferences -->
     <string name="pref_theme">Theme</string>
 
@@ -76,6 +81,8 @@
     <string name="key_processing_rate">processingRate</string>
     <string name="key_calculation_rate">calculationRate</string>
     <string name="key_sector_calculation_rate">sectorCalculationRate</string>
+    <string name="key_environment">environment</string>
+    <string name="key_track">track</string>
     <string name="key_theme">theme</string>
 
     <!-- Default values -->
@@ -84,10 +91,9 @@
     <string name="default_processing_rate">2</string>
     <string name="default_calculation_rate">4</string>
     <string name="default_sector_calculation_rate">6</string>
+    <string name="default_environment">1</string>
+    <string name="default_track">1</string>
     <string name="default_theme">3</string>
-
-    <!-- Digits -->
-    <string name="digits_zero_to_nine">0123456789</string>
 
     <!-- Snackbar messages -->
     <string name="toast_port_reset">Port out of range. Port was reset to default.</string>

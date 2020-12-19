@@ -13,7 +13,6 @@ public class UdpListener extends Thread {
     public UdpListener(int port) {
         this.port = port;
         processor = DataProcessor.getInstance();
-        processor.setPort(port);
     }
 
     @Override

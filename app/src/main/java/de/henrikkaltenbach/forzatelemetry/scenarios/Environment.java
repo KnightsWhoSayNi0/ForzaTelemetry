@@ -21,6 +21,9 @@ public class Environment {
     }
 
     public static Environment getEnvironment(String name) {
+        if (name.equals(NO_ENVIRONMENT.name)) {
+            return NO_ENVIRONMENT;
+        }
         for (Environment environment : ENVIRONMENTS) {
             if (environment.name.equals(name)) {
                 return environment;
@@ -36,5 +39,9 @@ public class Environment {
             }
         }
         return Track.NO_TRACK;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -34,91 +34,91 @@ public class TelemetryViewModel extends BaseObservable {
 
     // region Fields
     //
-    protected int isRaceOn;
-    protected int timestampMS;
-    protected float engineMaxRpm;
-    protected float engineIdleRpm;
-    protected float currentEngineRpm;
-    protected float accelerationX;
-    protected float accelerationY;
-    protected float accelerationZ;
-    protected float velocityX;
-    protected float velocityY;
-    protected float velocityZ;
-    protected float angularVelocityX;
-    protected float angularVelocityY;
-    protected float angularVelocityZ;
-    protected float yaw;
-    protected float pitch;
-    protected float roll;
-    protected float normalizedSuspensionTravelFrontLeft;
-    protected float normalizedSuspensionTravelFrontRight;
-    protected float normalizedSuspensionTravelRearLeft;
-    protected float normalizedSuspensionTravelRearRight;
-    protected float tireSlipRatioFrontLeft;
-    protected float tireSlipRatioFrontRight;
-    protected float tireSlipRatioRearLeft;
-    protected float tireSlipRatioRearRight;
-    protected float wheelRotationSpeedFrontLeft;
-    protected float wheelRotationSpeedFrontRight;
-    protected float wheelRotationSpeedRearLeft;
-    protected float wheelRotationSpeedRearRight;
-    protected int wheelOnRumbleStripFrontLeft;
-    protected int wheelOnRumbleStripFrontRight;
-    protected int wheelOnRumbleStripRearLeft;
-    protected int wheelOnRumbleStripRearRight;
-    protected float wheelInPuddleDepthFrontLeft;
-    protected float wheelInPuddleDepthFrontRight;
-    protected float wheelInPuddleDepthRearLeft;
-    protected float wheelInPuddleDepthRearRight;
-    protected float surfaceRumbleFrontLeft;
-    protected float surfaceRumbleFrontRight;
-    protected float surfaceRumbleRearLeft;
-    protected float surfaceRumbleRearRight;
-    protected float tireSlipAngleFrontLeft;
-    protected float tireSlipAngleFrontRight;
-    protected float tireSlipAngleRearLeft;
-    protected float tireSlipAngleRearRight;
-    protected float tireCombinedSlipFrontLeft;
-    protected float tireCombinedSlipFrontRight;
-    protected float tireCombinedSlipRearLeft;
-    protected float tireCombinedSlipRearRight;
-    protected float suspensionTravelMetersFrontLeft;
-    protected float suspensionTravelMetersFrontRight;
-    protected float suspensionTravelMetersRearLeft;
-    protected float suspensionTravelMetersRearRight;
-    protected int carOrdinal;
-    protected int carClass;
-    protected int carPerformanceIndex;
-    protected int drivetrainType;
-    protected int numCylinders;
-    protected float positionX;
-    protected float positionY;
-    protected float positionZ;
-    protected float speed;
-    protected float power;
-    protected float torque;
-    protected float tireTempFrontLeft;
-    protected float tireTempFrontRight;
-    protected float tireTempRearLeft;
-    protected float tireTempRearRight;    // Todo: tire temp rear right seems to be the same as rear left.
-    protected float boost;
-    protected float fuel;
-    protected float distanceTraveled;
-    protected float bestLap;
-    protected float lastLap;
-    protected float currentLap;
-    protected float currentRaceTime;
-    protected short lapNumber;
-    protected byte racePosition;
-    protected byte accel;
-    protected byte brake;
-    protected byte clutch;
-    protected byte handBrake;
-    protected byte gear;
-    protected byte steer;
-    protected byte normalizedDrivingLine;
-    protected byte normalizedAIBrakeDifference;
+    private int isRaceOn;
+    private int timestampMS;
+    private float engineMaxRpm;
+    private float engineIdleRpm;
+    private float currentEngineRpm;
+    private float accelerationX;
+    private float accelerationY;
+    private float accelerationZ;
+    private float velocityX;
+    private float velocityY;
+    private float velocityZ;
+    private float angularVelocityX;
+    private float angularVelocityY;
+    private float angularVelocityZ;
+    private float yaw;
+    private float pitch;
+    private float roll;
+    private float normalizedSuspensionTravelFrontLeft;
+    private float normalizedSuspensionTravelFrontRight;
+    private float normalizedSuspensionTravelRearLeft;
+    private float normalizedSuspensionTravelRearRight;
+    private float tireSlipRatioFrontLeft;
+    private float tireSlipRatioFrontRight;
+    private float tireSlipRatioRearLeft;
+    private float tireSlipRatioRearRight;
+    private float wheelRotationSpeedFrontLeft;
+    private float wheelRotationSpeedFrontRight;
+    private float wheelRotationSpeedRearLeft;
+    private float wheelRotationSpeedRearRight;
+    private int wheelOnRumbleStripFrontLeft;
+    private int wheelOnRumbleStripFrontRight;
+    private int wheelOnRumbleStripRearLeft;
+    private int wheelOnRumbleStripRearRight;
+    private float wheelInPuddleDepthFrontLeft;
+    private float wheelInPuddleDepthFrontRight;
+    private float wheelInPuddleDepthRearLeft;
+    private float wheelInPuddleDepthRearRight;
+    private float surfaceRumbleFrontLeft;
+    private float surfaceRumbleFrontRight;
+    private float surfaceRumbleRearLeft;
+    private float surfaceRumbleRearRight;
+    private float tireSlipAngleFrontLeft;
+    private float tireSlipAngleFrontRight;
+    private float tireSlipAngleRearLeft;
+    private float tireSlipAngleRearRight;
+    private float tireCombinedSlipFrontLeft;
+    private float tireCombinedSlipFrontRight;
+    private float tireCombinedSlipRearLeft;
+    private float tireCombinedSlipRearRight;
+    private float suspensionTravelMetersFrontLeft;
+    private float suspensionTravelMetersFrontRight;
+    private float suspensionTravelMetersRearLeft;
+    private float suspensionTravelMetersRearRight;
+    private int carOrdinal;
+    private int carClass;
+    private int carPerformanceIndex;
+    private int drivetrainType;
+    private int numCylinders;
+    private float positionX;
+    private float positionY;
+    private float positionZ;
+    private float speed;
+    private float power;
+    private float torque;
+    private float tireTempFrontLeft;
+    private float tireTempFrontRight;
+    private float tireTempRearLeft;
+    private float tireTempRearRight;    // Todo: tire temp rear right seems to be the same as rear left.
+    private float boost;
+    private float fuel;
+    private float distanceTraveled;
+    private float bestLap;
+    private float lastLap;
+    private float currentLap;
+    private float currentRaceTime;
+    private short lapNumber;
+    private byte racePosition;
+    private byte accel;
+    private byte brake;
+    private byte clutch;
+    private byte handBrake;
+    private byte gear;
+    private byte steer;
+    private byte normalizedDrivingLine;
+    private byte normalizedAIBrakeDifference;
     // endregion Fields
 
     // region Getter
@@ -505,7 +505,7 @@ public class TelemetryViewModel extends BaseObservable {
 
     @Bindable
     public float getDistanceTraveledLap() {
-        return calculated.track.getDistanceTraveledLap(distanceTraveled);
+        return calculated.getTrack().getDistanceTraveledLap(distanceTraveled);
     }
 
     @Bindable
@@ -611,8 +611,8 @@ public class TelemetryViewModel extends BaseObservable {
 
     public void setCurrentEngineRpm(float currentEngineRpm) {
         if (this.currentEngineRpm != currentEngineRpm) {
-            if (calculated.maxMeasuredRpm < currentEngineRpm) {
-                calculated.maxMeasuredRpm = currentEngineRpm;
+            if (calculated.getMaxMeasuredRpm() < currentEngineRpm) {
+                calculated.setMaxMeasuredRpm(currentEngineRpm);
             }
             this.currentEngineRpm = currentEngineRpm;
             notifyPropertyChanged(BR.currentEngineRpm);
@@ -1066,9 +1066,15 @@ public class TelemetryViewModel extends BaseObservable {
 
     public void setBoost(float boost) {
         if (this.boost != boost) {
+            if (calculated.getMaxMeasuredBoostPsi() < boost) {
+                calculated.setMaxMeasuredBoost(boost);
+            }
             this.boost = boost;
             notifyPropertyChanged(BR.boostPsi);
             notifyPropertyChanged(BR.boostBar);
+            notifyPropertyChanged(BR.maxMeasuredBoostPsi);
+            notifyPropertyChanged(BR.maxMeasuredBoostBar);
+            notifyPropertyChanged(BR.boostProgress);
         }
     }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Processing rate Preference -->
-    <string-array name="entries_processing_rate">
+    <string-array name="entries_processing_rates">
         <item>60</item>
         <item>30</item>
         <item>20</item>
@@ -15,7 +15,7 @@
         <item>2</item>
         <item>1</item>
     </string-array>
-    <string-array name="entry_values_processing_rate">
+    <string-array name="entry_values_processing_rates">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -29,7 +29,7 @@
         <item>30</item>
         <item>60</item>
     </string-array>
-    <string-array name="entries_sector_rate">
+    <string-array name="entries_sector_rates">
         <item>10</item>
         <item>6</item>
         <item>5</item>
@@ -38,7 +38,7 @@
         <item>2</item>
         <item>1</item>
     </string-array>
-    <string-array name="entry_values_sector_rate">
+    <string-array name="entry_values_sector_rates">
         <item>6</item>
         <item>10</item>
         <item>12</item>
@@ -47,12 +47,21 @@
         <item>30</item>
         <item>60</item>
     </string-array>
-    <string-array name="entries_theme">
+    <string-array name="environments">
+        <item>no environment</item>
+        <item>Nürburgring</item>
+    </string-array>
+    <string-array name="tracks">
+        <item>Full Circuit</item>
+        <item>Nordschleife</item>
+        <item>GP Circuit</item>
+    </string-array>
+    <string-array name="entries_themes">
         <item>Light</item>
         <item>Dark</item>
         <item>System default</item>
     </string-array>
-    <string-array name="entry_values_theme">
+    <string-array name="entry_values_themes">
         <item>1</item>
         <item>2</item>
         <item>-1</item>

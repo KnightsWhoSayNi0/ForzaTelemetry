@@ -2,7 +2,7 @@
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+>
     <data>
         <variable
                 name="telemetry"
@@ -156,6 +156,38 @@
                     android:textSize="24sp"
                     app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
                     app:layout_constraintEnd_toEndOf="parent"/>
+            <ProgressBar
+                    android:id="@+id/pbBoost"
+                    android:layout_width="256dp"
+                    android:layout_height="256dp"
+                    android:progress="@{calculated.boostProgress}"
+                    style="@style/CircularDeterminateProgressBar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvX"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            <TextView
+                    android:id="@+id/tvBoost"
+                    android:text="@{@string/format_f3p2(telemetry.boostBar)}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
+                    android:textSize="36sp"
+                    app:layout_constraintTop_toTopOf="@+id/pbBoost"
+                    app:layout_constraintBottom_toBottomOf="@+id/pbBoost"
+                    app:layout_constraintEnd_toEndOf="@+id/pbBoost"
+                    app:layout_constraintStart_toStartOf="@+id/pbBoost"/>
+            <TextView
+                    android:id="@+id/tvBoostProgress"
+                    android:text="@{String.valueOf(calculated.boostProgress)}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
+                    android:textSize="36sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pbBoost"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </layout>

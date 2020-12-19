@@ -21,18 +21,18 @@ import de.henrikkaltenbach.forzatelemetry.viewmodels.TelemetryViewModel;
 
 public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private ActivityMainBinding binding;
     private UdpListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setVariable(BR.telemetry, TelemetryViewModel.getInstance());
-        binding.setVariable(BR.calculated, CalculatedViewModel.getInstance());
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setTelemetry(TelemetryViewModel.getInstance());
+        binding.setCalculated(CalculatedViewModel.getInstance());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
                 startListener(sharedPreferences);
                 return;
             case "raceOn":
-                boolean onlyIfRaceIsOn = sharedPreferences.getBoolean(getString(R.string.key_race_on), true);
-                listener.setRaceOn(onlyIfRaceIsOn);
+                boolean raceOn = sharedPreferences.getBoolean(getString(R.string.key_race_on), true);
+                listener.setRaceOn(raceOn);
                 return;
             case "processingRate":
                 int processingRate = Integer.parseInt(sharedPreferences.getString(getString(R.string.key_processing_rate), getString(R.string.default_processing_rate)));
