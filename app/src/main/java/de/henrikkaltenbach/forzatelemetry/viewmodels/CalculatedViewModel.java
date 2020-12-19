@@ -255,14 +255,8 @@ public class CalculatedViewModel extends BaseObservable {
     }
 
     @Bindable
-    public int getBoostProgress() {
-        int boostProgress = 0;
-        float boostPsi = telemetry.getBoostPsi();
-        float maxMeasrdBoost = maxMeasuredBoost;
-        float fraction = boostPsi / maxMeasrdBoost;
-        float percentage = fraction * 100;
-        boostProgress = (int) percentage;
-        return boostProgress;
+    public int getBoostProgressBarProgress() {
+        return Math.round(telemetry.getBoostPsi() / maxMeasuredBoost * 100f);
     }
     // endregion Getter
 
@@ -308,9 +302,11 @@ public class CalculatedViewModel extends BaseObservable {
     }
 
     public void setMaxMeasuredBoost(float maxMeasuredBoost) {
-        this.maxMeasuredBoost = maxMeasuredBoost;
-        notifyPropertyChanged(BR.maxMeasuredBoostBar);
-        notifyPropertyChanged(BR.maxMeasuredBoostPsi);
+        if (this.maxMeasuredBoost != maxMeasuredBoost) {    // Todo: remove value changed check because unnecessary.
+            this.maxMeasuredBoost = maxMeasuredBoost;
+            notifyPropertyChanged(BR.maxMeasuredBoostPsi);
+            notifyPropertyChanged(BR.maxMeasuredBoostBar);
+        }
     }
 
     public void setMaxMeasuredDeceleration(float maxMeasuredDeceleration) {

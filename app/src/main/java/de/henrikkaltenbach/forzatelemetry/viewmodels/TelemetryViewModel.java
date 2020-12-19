@@ -1068,13 +1068,13 @@ public class TelemetryViewModel extends BaseObservable {
         if (this.boost != boost) {
             if (calculated.getMaxMeasuredBoostPsi() < boost) {
                 calculated.setMaxMeasuredBoost(boost);
+                notifyPropertyChanged(BR.maxMeasuredBoostPsi);
+                notifyPropertyChanged(BR.maxMeasuredBoostBar);
             }
             this.boost = boost;
             notifyPropertyChanged(BR.boostPsi);
             notifyPropertyChanged(BR.boostBar);
-            notifyPropertyChanged(BR.maxMeasuredBoostPsi);
-            notifyPropertyChanged(BR.maxMeasuredBoostBar);
-            notifyPropertyChanged(BR.boostProgress);
+
         }
     }
 

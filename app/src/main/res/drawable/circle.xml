@@ -3,9 +3,19 @@
     <item>
         <shape
                 android:shape="ring"
-                android:thicknessRatio="7"
+                android:innerRadius="120dp"
+                android:thickness="1dp"
                 android:useLevel="false">
-            <solid android:color="#DDD" />
+            <solid android:color="@color/colorAccent" />
+        </shape>
+    </item>
+    <item>
+        <shape
+                android:shape="ring"
+                android:innerRadius="60dp"
+                android:thickness="1dp"
+                android:useLevel="false">
+            <solid android:color="@color/colorAccent" />
         </shape>
     </item>
     <item>

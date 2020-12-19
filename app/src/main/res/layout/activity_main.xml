@@ -29,11 +29,11 @@
                 android:layout_margin="10dp"
                 android:layout_width="match_parent">
             <TextView
+                    android:text="@{calculated.sector}"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvSector"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@{calculated.sector}"
                     android:textAlignment="center"
                     android:textColor="@{calculated.sector.equals(@string/label_no_sector) ? @color/red : @color/yellow}"
                     android:textSize="36sp"
@@ -41,118 +41,118 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
             <TextView
+                    android:text="@string/label_distance"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvDistance"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/label_distance"
                     android:textSize="30sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvSector"/>
             <TextView
+                    android:text="@{@string/format_f8p2(telemetry.distanceTraveledTotal)}"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvDistanceTraveledTotal"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@{@string/format_f8p2(telemetry.distanceTraveledTotal)}"
                     android:textSize="30sp"
                     app:layout_constraintEnd_toStartOf="@+id/tvMeter"
                     app:layout_constraintTop_toBottomOf="@+id/tvSector"/>
             <TextView
+                    android:text="@string/unit_meter"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvMeter"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/unit_meter"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tvDistanceTraveledTotal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvSector"/>
             <TextView
+                    android:text="@string/label_in_lap"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvInLap"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/label_in_lap"
                     android:textSize="30sp"
                     app:layout_constraintEnd_toEndOf="@+id/tvDistance"
                     app:layout_constraintTop_toBottomOf="@+id/tvDistance"/>
             <TextView
+                    android:text="@{@string/format_f8p2(telemetry.distanceTraveledLap)}"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvDistanceTraveledLap"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@{@string/format_f8p2(telemetry.distanceTraveledLap)}"
                     android:textSize="30sp"
                     app:layout_constraintEnd_toStartOf="@+id/tvMeter2"
                     app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledTotal"/>
             <TextView
+                    android:text="@string/unit_meter"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvMeter2"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/unit_meter"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tvDistanceTraveledLap"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledTotal"/>
             <TextView
+                    android:text="@string/label_positionX"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvX"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:paddingEnd="10dp"
                     android:paddingStart="10dp"
-                    android:text="@string/label_positionX"
                     android:textSize="24sp"
                     app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
                     app:layout_constraintEnd_toStartOf="@+id/tvPositionX"/>
             <TextView
+                    android:text="@{@string/format_f6p2(telemetry.positionX)}"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvPositionX"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@{@string/format_f6p2(telemetry.positionX)}"
                     android:textSize="24sp"
                     app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
                     app:layout_constraintEnd_toStartOf="@+id/tvY"/>
             <TextView
+                    android:text="@string/label_positionY"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvY"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:paddingEnd="10dp"
                     android:paddingStart="10dp"
-                    android:text="@string/label_positionY"
                     android:textSize="24sp"
                     app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
                     app:layout_constraintEnd_toStartOf="@+id/tvPositionY"/>
             <TextView
+                    android:text="@{@string/format_f6p2(telemetry.positionY)}"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvPositionY"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@{@string/format_f6p2(telemetry.positionY)}"
                     android:textSize="24sp"
                     app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
                     app:layout_constraintEnd_toStartOf="@+id/tvZ"/>
             <TextView
+                    android:text="@string/label_positionZ"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvZ"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:paddingEnd="10dp"
                     android:paddingStart="10dp"
-                    android:text="@string/label_positionZ"
                     android:textSize="24sp"
                     app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
                     app:layout_constraintEnd_toStartOf="@+id/tvPositionZ"/>
             <TextView
+                    android:text="@{@string/format_f6p2(telemetry.positionZ)}"
                     android:fontFamily="sans-serif-thin"
                     android:id="@+id/tvPositionZ"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@{@string/format_f6p2(telemetry.positionZ)}"
                     android:textSize="24sp"
                     app:layout_constraintTop_toBottomOf="@+id/tvDistanceTraveledLap"
                     app:layout_constraintEnd_toEndOf="parent"/>
@@ -160,15 +160,15 @@
                     android:id="@+id/pbBoost"
                     android:layout_width="256dp"
                     android:layout_height="256dp"
-                    android:progress="@{calculated.boostProgress}"
+                    android:progress="@{calculated.boostProgressBarProgress}"
                     style="@style/CircularDeterminateProgressBar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvX"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
             <TextView
-                    android:id="@+id/tvBoost"
                     android:text="@{@string/format_f3p2(telemetry.boostBar)}"
+                    android:id="@+id/tvBoost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-thin"
@@ -178,16 +178,38 @@
                     app:layout_constraintEnd_toEndOf="@+id/pbBoost"
                     app:layout_constraintStart_toStartOf="@+id/pbBoost"/>
             <TextView
+                    android:text="-"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pbBoost"
+                    app:layout_constraintEnd_toStartOf="@+id/tvBoostProgress"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:fontFamily="sans-serif-thin"
+                    android:textSize="36sp"/>
+            <TextView
                     android:id="@+id/tvBoostProgress"
-                    android:text="@{String.valueOf(calculated.boostProgress)}"
+                    android:text="@{@string/format_f3p2(telemetry.boostBar)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-thin"
                     android:textSize="36sp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pbBoost"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/pbBoost"/>
+                    app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                    android:text="@{@string/format_f3p2(calculated.maxMeasuredBoostBar)}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pbBoost"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvBoostProgress"
+                    android:fontFamily="sans-serif-thin"
+                    android:textSize="36sp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </layout>
