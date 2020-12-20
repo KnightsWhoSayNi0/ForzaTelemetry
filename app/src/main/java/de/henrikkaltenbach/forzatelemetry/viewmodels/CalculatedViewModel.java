@@ -67,6 +67,7 @@ public class CalculatedViewModel extends BaseObservable {
     private float wheelRpmDiffRearPercentage;
     private float wheelRpmDiffRightAbsolute;
     private float wheelRpmDiffRightPercentage;
+    private int boostProgressBarProgress;
     // endregion Fields
 
     // region Getter
@@ -105,13 +106,8 @@ public class CalculatedViewModel extends BaseObservable {
     }
 
     @Bindable
-    public float getMaxMeasuredBoostPsi() {
+    public float getMaxMeasuredBoost() {
         return maxMeasuredBoost;
-    }
-
-    @Bindable
-    public float getMaxMeasuredBoostBar() {
-        return convertPsiToBar(maxMeasuredBoost);
     }
 
     @Bindable
@@ -175,42 +171,7 @@ public class CalculatedViewModel extends BaseObservable {
     }
 
     @Bindable
-    public float getTireTempAverageFrontCelsius() {
-        return convertFahrenheitToCelsius(tireTempAverageFront);
-    }
-
-    @Bindable
-    public float getTireTempAverageRearCelsius() {
-        return convertFahrenheitToCelsius(tireTempAverageRear);
-    }
-
-    @Bindable
-    public float getTireTempAverageLeftCelsius() {
-        return convertFahrenheitToCelsius(tireTempAverageLeft);
-    }
-
-    @Bindable
-    public float getTireTempAverageRightCelsius() {
-        return convertFahrenheitToCelsius(tireTempAverageRight);
-    }
-
-    @Bindable
-    public float getTireTempAverageTotalCelsius() {
-        return convertFahrenheitToCelsius(tireTempAverageTotal);
-    }
-
-    @Bindable
-    public float getVelocityKph() {
-        return velocity * 3.6f;
-    }
-
-    @Bindable
-    public float getVelocityMph() {
-        return velocity * 2.23693629f;
-    }
-
-    @Bindable
-    public float getVelocityMps() {
+    public float getVelocity() {
         return velocity;
     }
 
@@ -256,7 +217,7 @@ public class CalculatedViewModel extends BaseObservable {
 
     @Bindable
     public int getBoostProgressBarProgress() {
-        return Math.round(telemetry.getBoostPsi() / maxMeasuredBoost * 100f);
+        return boostProgressBarProgress;
     }
     // endregion Getter
 
@@ -297,26 +258,31 @@ public class CalculatedViewModel extends BaseObservable {
     }
 
     public void setMaxMeasuredAcceleration(float maxMeasuredAcceleration) {
-        this.maxMeasuredAcceleration = maxMeasuredAcceleration;
-        notifyPropertyChanged(BR.maxMeasuredAcceleration);
+        if (this.maxMeasuredAcceleration != maxMeasuredAcceleration) {
+            this.maxMeasuredAcceleration = maxMeasuredAcceleration;
+            notifyPropertyChanged(BR.maxMeasuredAcceleration);
+        }
     }
 
     public void setMaxMeasuredBoost(float maxMeasuredBoost) {
-        if (this.maxMeasuredBoost != maxMeasuredBoost) {    // Todo: remove value changed check because unnecessary.
+        if (this.maxMeasuredBoost != maxMeasuredBoost) {
             this.maxMeasuredBoost = maxMeasuredBoost;
-            notifyPropertyChanged(BR.maxMeasuredBoostPsi);
-            notifyPropertyChanged(BR.maxMeasuredBoostBar);
+            notifyPropertyChanged(BR.maxMeasuredBoost);
         }
     }
 
     public void setMaxMeasuredDeceleration(float maxMeasuredDeceleration) {
-        this.maxMeasuredDeceleration = maxMeasuredDeceleration;
-        notifyPropertyChanged(BR.maxMeasuredDeceleration);
+        if (this.maxMeasuredDeceleration != maxMeasuredDeceleration) {
+            this.maxMeasuredDeceleration = maxMeasuredDeceleration;
+            notifyPropertyChanged(BR.maxMeasuredDeceleration);
+        }
     }
 
     public void setMaxMeasuredRpm(float maxMeasuredRpm) {
-        this.maxMeasuredRpm = maxMeasuredRpm;
-        notifyPropertyChanged(BR.maxMeasuredRpm);
+        if (this.maxMeasuredRpm != maxMeasuredRpm) {
+            this.maxMeasuredRpm = maxMeasuredRpm;
+            notifyPropertyChanged(BR.maxMeasuredRpm);
+        }
     }
 
     public void setNormalizedAcceleration(float normalizedAcceleration) {
@@ -364,63 +330,58 @@ public class CalculatedViewModel extends BaseObservable {
 
     public void calcTireTempAverageFront() {
         float tireTempFront = getAverage(
-                telemetry.getTireTempFrontLeftFahrenheit(),
-                telemetry.getTireTempFrontRightFahrenheit()
+                telemetry.getTireTempFrontLeft(),
+                telemetry.getTireTempFrontRight()
         );
         if (this.tireTempAverageFront != tireTempFront) {
             this.tireTempAverageFront = tireTempFront;
             notifyPropertyChanged(BR.tireTempAverageFrontFahrenheit);
-            notifyPropertyChanged(BR.tireTempAverageFrontCelsius);
         }
     }
 
     public void calcTireTempAverageRear() {
         float tireTempRear = getAverage(
-                telemetry.getTireTempRearLeftFahrenheit(),
-                telemetry.getTireTempRearRightFahrenheit()
+                telemetry.getTireTempRearLeft(),
+                telemetry.getTireTempRearRight()
         );
         if (this.tireTempAverageFront != tireTempRear) {
             this.tireTempAverageRear = tireTempRear;
             notifyPropertyChanged(BR.tireTempAverageRearFahrenheit);
-            notifyPropertyChanged(BR.tireTempAverageRearCelsius);
         }
     }
 
     public void calcTireTempAverageLeft() {
         float tireTempLeft = getAverage(
-                telemetry.getTireTempFrontLeftFahrenheit(),
-                telemetry.getTireTempRearLeftFahrenheit()
+                telemetry.getTireTempFrontLeft(),
+                telemetry.getTireTempRearLeft()
         );
         if (this.tireTempAverageFront != tireTempLeft) {
             this.tireTempAverageLeft = tireTempLeft;
             notifyPropertyChanged(BR.tireTempAverageLeftFahrenheit);
-            notifyPropertyChanged(BR.tireTempAverageLeftCelsius);
         }
     }
 
     public void calcTireTempAverageRight() {
         float tireTempRight = getAverage(
-                telemetry.getTireTempFrontRightFahrenheit(),
-                telemetry.getTireTempRearRightFahrenheit()
+                telemetry.getTireTempFrontRight(),
+                telemetry.getTireTempRearRight()
         );
         if (this.tireTempAverageFront != tireTempRight) {
             this.tireTempAverageRight = tireTempRight;
             notifyPropertyChanged(BR.tireTempAverageRightFahrenheit);
-            notifyPropertyChanged(BR.tireTempAverageRightCelsius);
         }
     }
 
     public void calcTireTempAverageTotal() {
         float tireTempRight = getAverage(
-                telemetry.getTireTempFrontLeftFahrenheit(),
-                telemetry.getTireTempFrontRightFahrenheit(),
-                telemetry.getTireTempRearLeftFahrenheit(),
-                telemetry.getTireTempRearRightFahrenheit()
+                telemetry.getTireTempFrontLeft(),
+                telemetry.getTireTempFrontRight(),
+                telemetry.getTireTempRearLeft(),
+                telemetry.getTireTempRearRight()
         );
         if (this.tireTempAverageTotal != tireTempRight) {
             this.tireTempAverageTotal = tireTempRight;
             notifyPropertyChanged(BR.tireTempAverageTotalFahrenheit);
-            notifyPropertyChanged(BR.tireTempAverageTotalCelsius);
         }
     }
 
@@ -432,9 +393,7 @@ public class CalculatedViewModel extends BaseObservable {
         );
         if (this.velocity != velocity) {
             this.velocity = velocity;
-            notifyPropertyChanged(BR.velocityMps);
-            notifyPropertyChanged(BR.velocityKph);
-            notifyPropertyChanged(BR.velocityMph);
+            notifyPropertyChanged(BR.velocity);
         }
     }
 
@@ -493,18 +452,26 @@ public class CalculatedViewModel extends BaseObservable {
             notifyPropertyChanged(BR.wheelRpmDiffRightPercentage);
         }
     }
+
+    public void setBoostProgressBarProgress(float boost) {
+        int progress = Math.round((boost + 11.02f) / (maxMeasuredBoost + 11.02f) * 83f);
+        if (boostProgressBarProgress != progress) {
+            boostProgressBarProgress = progress;
+            notifyPropertyChanged(BR.boostProgressBarProgress);
+        }
+    }
+
+    public void resetMaxMeasuredValues() {
+//        maxMeasuredAcceleration = -1f;
+        maxMeasuredBoost = -11.02f;
+        boostProgressBarProgress = 0;
+//        maxMeasuredDeceleration = -1f;
+//        maxMeasuredRpm = -1f;
+    }
     // endregion Setter
 
     // region Utility methods
     //
-    private float convertFahrenheitToCelsius(float temperature) {
-        return (temperature - 32f) / 1.8f;
-    }
-
-    private float convertPsiToBar(float pressure) {
-        return pressure * 0.06894757f;
-    }
-
     private float getAverage(float valueOne, float valueTwo, float valueThree, float valueFour) {
         return (valueOne + valueTwo + valueThree + valueFour) / 4f;
     }

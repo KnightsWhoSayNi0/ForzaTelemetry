@@ -48,8 +48,9 @@ public class DataProcessor {
             if (counter % processingRate == 0) {
                 proceedParsing(data, counter);
             }
-        } else {
-            resetMaxMeasuredValues();
+        }
+        if (telemetry.getIsRaceOn() == 0) {
+            calculated.resetMaxMeasuredValues();
         }
     }
 
@@ -177,13 +178,6 @@ public class DataProcessor {
             calculated.calcSector();
         }
         // endregion Calculated data
-    }
-
-    private void resetMaxMeasuredValues() {
-        calculated.setMaxMeasuredAcceleration(-1f);
-        calculated.setMaxMeasuredBoost(100f);
-        calculated.setMaxMeasuredDeceleration(-1f);
-        calculated.setMaxMeasuredRpm(-1f);
     }
 
     public void setRaceOn(boolean raceOn) {

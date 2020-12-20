@@ -3,7 +3,7 @@
     <item>
         <shape
                 android:shape="ring"
-                android:innerRadius="120dp"
+                android:innerRadius="127dp"
                 android:thickness="1dp"
                 android:useLevel="false">
             <solid android:color="@color/colorAccent" />
@@ -20,16 +20,17 @@
     </item>
     <item>
         <rotate
-                android:fromDegrees="90"
-                android:toDegrees="90">
+                android:fromDegrees="120"
+                android:toDegrees="120">
             <shape
                     android:shape="ring"
-                    android:thicknessRatio="6"
+                    android:innerRadius="61dp"
+                    android:thickness="66dp"
                     android:useLevel="true">
                 <gradient
-                        android:startColor="@color/yellow"
+                        android:startColor="@color/green"
                         android:endColor="@color/red"
-                        android:type="sweep" />
+                        android:type="sweep"/>
             </shape>
         </rotate>
     </item>

@@ -444,53 +444,28 @@ public class TelemetryViewModel extends BaseObservable {
     }
 
     @Bindable
-    public float getTireTempFrontLeftFahrenheit() {
+    public float getTireTempFrontLeft() {
         return tireTempFrontLeft;
     }
 
     @Bindable
-    public float getTireTempFrontRightFahrenheit() {
+    public float getTireTempFrontRight() {
         return tireTempFrontRight;
     }
 
     @Bindable
-    public float getTireTempRearLeftFahrenheit() {
+    public float getTireTempRearLeft() {
         return tireTempRearLeft;
     }
 
     @Bindable
-    public float getTireTempRearRightFahrenheit() {
+    public float getTireTempRearRight() {
         return tireTempRearRight;
     }
 
     @Bindable
-    public float getTireTempFrontLeftCelsius() {
-        return convertFahrenheitToCelsius(tireTempFrontLeft);
-    }
-
-    @Bindable
-    public float getTireTempFrontRightCelsius() {
-        return convertFahrenheitToCelsius(tireTempFrontRight);
-    }
-
-    @Bindable
-    public float getTireTempRearLeftCelsius() {
-        return convertFahrenheitToCelsius(tireTempRearLeft);
-    }
-
-    @Bindable
-    public float getTireTempRearRightCelsius() {
-        return convertFahrenheitToCelsius(tireTempRearRight);
-    }
-
-    @Bindable
-    public float getBoostPsi() {
+    public float getBoost() {
         return boost;
-    }
-
-    @Bindable
-    public float getBoostBar() {
-        return convertPsiToBar(boost);
     }
 
     @Bindable
@@ -1035,46 +1010,40 @@ public class TelemetryViewModel extends BaseObservable {
     public void setTireTempFrontLeft(float tireTempFrontLeft) {
         if (this.tireTempFrontLeft != tireTempFrontLeft) {
             this.tireTempFrontLeft = tireTempFrontLeft;
-            notifyPropertyChanged(BR.tireTempFrontLeftFahrenheit);
-            notifyPropertyChanged(BR.tireTempFrontLeftCelsius);
+            notifyPropertyChanged(BR.tireTempFrontLeft);
         }
     }
 
     public void setTireTempFrontRight(float tireTempFrontRight) {
         if (this.tireTempFrontRight != tireTempFrontRight) {
             this.tireTempFrontRight = tireTempFrontRight;
-            notifyPropertyChanged(BR.tireTempFrontRightFahrenheit);
-            notifyPropertyChanged(BR.tireTempFrontRightCelsius);
+            notifyPropertyChanged(BR.tireTempFrontRight);
         }
     }
 
     public void setTireTempRearLeft(float tireTempRearLeft) {
         if (this.tireTempRearLeft != tireTempRearLeft) {
             this.tireTempRearLeft = tireTempRearLeft;
-            notifyPropertyChanged(BR.tireTempRearLeftFahrenheit);
-            notifyPropertyChanged(BR.tireTempRearLeftCelsius);
+            notifyPropertyChanged(BR.tireTempRearLeft);
         }
     }
 
     public void setTireTempRearRight(float tireTempRearRight) {
         if (this.tireTempRearRight != tireTempRearRight) {
             this.tireTempRearRight = tireTempRearRight;
-            notifyPropertyChanged(BR.tireTempRearRightFahrenheit);
-            notifyPropertyChanged(BR.tireTempRearRightCelsius);
+            notifyPropertyChanged(BR.tireTempRearRight);
         }
     }
 
     public void setBoost(float boost) {
         if (this.boost != boost) {
-            if (calculated.getMaxMeasuredBoostPsi() < boost) {
+            if (calculated.getMaxMeasuredBoost() < boost) {
                 calculated.setMaxMeasuredBoost(boost);
-                notifyPropertyChanged(BR.maxMeasuredBoostPsi);
-                notifyPropertyChanged(BR.maxMeasuredBoostBar);
+                notifyPropertyChanged(BR.maxMeasuredBoost);
             }
             this.boost = boost;
-            notifyPropertyChanged(BR.boostPsi);
-            notifyPropertyChanged(BR.boostBar);
-
+            calculated.setBoostProgressBarProgress(boost);
+            notifyPropertyChanged(BR.boost);
         }
     }
 
@@ -1191,15 +1160,4 @@ public class TelemetryViewModel extends BaseObservable {
         }
     }
     // endregion Setter
-
-    // region Utility methods
-    //
-    private float convertFahrenheitToCelsius(float temperature) {
-        return (temperature - 32f) / 1.8f;
-    }
-
-    private float convertPsiToBar(float pressure) {
-        return pressure * 0.06894757f;
-    }
-    // endregion Utility methods
 }
